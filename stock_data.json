@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-13 07:45:16",
+  "generated_at": "2026-03-13 10:23:05",
   "csv_source": "20260119-ret.csv",
   "total_stocks": 30,
   "stocks": [
@@ -125,9 +125,9 @@
     },
     {
       "code": "600895",
-      "name": "张江高科",
-      "price": "37.24",
-      "change_pct": "-1.14%",
+      "name": "600895",
+      "price": "",
+      "change_pct": "",
       "target_date": "20260119",
       "min_distance": 65.8379,
       "min_distance_name": "瑞达期货-20251020-20251107",
@@ -485,14 +485,26 @@
     },
     {
       "code": "603236",
-      "name": "移远通信",
-      "price": "78.98",
-      "change_pct": "-0.32%",
+      "name": "603236",
+      "price": "",
+      "change_pct": "",
       "target_date": "20260119",
       "min_distance": 70.6473,
       "min_distance_name": "瑞达期货-20251020-20251107",
       "matching_period": "['20251226']-['20260119']",
       "news": [
+        {
+          "title": "移远通信：公司暂无自研射频前端产品",
+          "date": "03-13 05:09",
+          "source": "移远通信资讯",
+          "url": "https://guba.eastmoney.com/news,603236,1679130964.html"
+        },
+        {
+          "title": "移远通信：目前模组外的衍生业务占整体营收比例相对较低，但呈现良好的增长态势",
+          "date": "03-13 04:51",
+          "source": "移远通信资讯",
+          "url": "https://guba.eastmoney.com/news,603236,1679126369.html"
+        },
         {
           "title": "移远通信：公司始终正视经营与市值管理的挑战",
           "date": "03-11 09:37",
@@ -528,18 +540,6 @@
           "date": "03-11 05:35",
           "source": "移远通信资讯",
           "url": "https://guba.eastmoney.com/news,603236,1677818174.html"
-        },
-        {
-          "title": "移远通信：计划于2026年4月24日披露2025年年度报告",
-          "date": "03-11 05:10",
-          "source": "移远通信资讯",
-          "url": "https://guba.eastmoney.com/news,603236,1677812103.html"
-        },
-        {
-          "title": "移远艾络迅与荣耀联合推出Meteer AI跳舞机器人玩具",
-          "date": "03-06 01:52",
-          "source": "移远通信资讯",
-          "url": "https://guba.eastmoney.com/news,603236,1675674830.html"
         }
       ]
     },
@@ -553,6 +553,18 @@
       "min_distance_name": "中信证券-20240708-20240730",
       "matching_period": "['20251224']-['20260119']",
       "news": [
+        {
+          "title": "赛马概念涨0.51% 主力资金净流入这些股",
+          "date": "03-13 05:14",
+          "source": "*ST正平资讯",
+          "url": "https://guba.eastmoney.com/news,603843,1679132874.html"
+        },
+        {
+          "title": "*ST正平(603843)龙虎榜数据(03-13)",
+          "date": "03-13 04:57",
+          "source": "*ST正平资讯",
+          "url": "https://guba.eastmoney.com/news,603843,1679127586.html"
+        },
         {
           "title": "*ST正平连收3个涨停板",
           "date": "03-13 09:55",
@@ -588,18 +600,6 @@
           "date": "02-27 06:40",
           "source": "*ST正平资讯",
           "url": "https://guba.eastmoney.com/news,603843,1672480208.html"
-        },
-        {
-          "title": "上交所对*ST岩石等异常波动退市风险警示股票及中韩半导体ETF等溢价较高基金进行重点监控",
-          "date": "02-27 06:30",
-          "source": "*ST正平资讯",
-          "url": "https://guba.eastmoney.com/news,603843,1672570199.html"
-        },
-        {
-          "title": "上游理财周刊｜多家上市公司被追责 资本市场严监管持续加码",
-          "date": "02-14 02:23",
-          "source": "*ST正平资讯",
-          "url": "https://guba.eastmoney.com/news,603843,1669876737.html"
         }
       ]
     },
@@ -665,14 +665,20 @@
     },
     {
       "code": "002600",
-      "name": "领益智造",
-      "price": "14.36",
-      "change_pct": "-1.64%",
+      "name": "002600",
+      "price": "",
+      "change_pct": "",
       "target_date": "20260119",
       "min_distance": 71.2806,
       "min_distance_name": "瑞达期货-20251020-20251107",
       "matching_period": "['20251226']-['20260119']",
       "news": [
+        {
+          "title": "领益智造：公司2025年度的利润分配方案将于2026年3月28日与年度报告同时披露",
+          "date": "03-13 04:34",
+          "source": "领益智造资讯",
+          "url": "https://guba.eastmoney.com/news,002600,1679121875.html"
+        },
         {
           "title": "领益智造：公司2025年年度报告将于2026年3月28日披露",
           "date": "03-13 11:27",
@@ -714,20 +720,14 @@
           "date": "03-10 06:41",
           "source": "领益智造资讯",
           "url": "https://guba.eastmoney.com/news,002600,1677213856.html"
-        },
-        {
-          "title": "69家机构，“盯上”1家公司",
-          "date": "03-08 07:59",
-          "source": "领益智造资讯",
-          "url": "https://guba.eastmoney.com/news,002600,1675985752.html"
         }
       ]
     },
     {
       "code": "301383",
-      "name": "301383",
-      "price": "",
-      "change_pct": "",
+      "name": "天键股份",
+      "price": "30.89",
+      "change_pct": "-2.28%",
       "target_date": "20260119",
       "min_distance": 72.0195,
       "min_distance_name": "瑞达期货-20251020-20251107",
@@ -854,6 +854,12 @@
       "matching_period": "['20251226']-['20260119']",
       "news": [
         {
+          "title": "【调研快报】福光股份接待长城证券股份有限公司等10家机构调研",
+          "date": "03-13 05:46",
+          "source": "福光股份资讯",
+          "url": "https://guba.eastmoney.com/news,688010,1679139314.html"
+        },
+        {
           "title": "福光股份：2025年净利1269.42万元 同比增长33.77%",
           "date": "02-28 09:01",
           "source": "福光股份资讯",
@@ -894,20 +900,14 @@
           "date": "02-24 08:08",
           "source": "福光股份资讯",
           "url": "https://guba.eastmoney.com/news,688010,1670734298.html"
-        },
-        {
-          "title": "福光股份：控股股东中融投资已增持公司股份23.33万股",
-          "date": "02-24 06:05",
-          "source": "福光股份资讯",
-          "url": "https://guba.eastmoney.com/news,688010,1670717185.html"
         }
       ]
     },
     {
       "code": "600568",
-      "name": "600568",
-      "price": "",
-      "change_pct": "",
+      "name": "ST中珠",
+      "price": "3.06",
+      "change_pct": "-3.16%",
       "target_date": "20260119",
       "min_distance": 72.7113,
       "min_distance_name": "中信证券-20240708-20240730",
@@ -965,9 +965,9 @@
     },
     {
       "code": "301070",
-      "name": "301070",
-      "price": "",
-      "change_pct": "",
+      "name": "开勒股份",
+      "price": "62.43",
+      "change_pct": "8%",
       "target_date": "20260119",
       "min_distance": 72.7452,
       "min_distance_name": "瑞达期货-20251020-20251107",
@@ -1085,9 +1085,9 @@
     },
     {
       "code": "002501",
-      "name": "002501",
-      "price": "",
-      "change_pct": "",
+      "name": "利源股份",
+      "price": "1.94",
+      "change_pct": "-1.02%",
       "target_date": "20260119",
       "min_distance": 73.2047,
       "min_distance_name": "瑞达期货-20251020-20251107",
@@ -1145,9 +1145,9 @@
     },
     {
       "code": "002678",
-      "name": "002678",
-      "price": "",
-      "change_pct": "",
+      "name": "珠江钢琴",
+      "price": "5.28",
+      "change_pct": "-2.04%",
       "target_date": "20260119",
       "min_distance": 73.303,
       "min_distance_name": "华纳药厂-20250409-20250512",
@@ -1265,9 +1265,9 @@
     },
     {
       "code": "002389",
-      "name": "002389",
-      "price": "",
-      "change_pct": "",
+      "name": "航天彩虹",
+      "price": "23.96",
+      "change_pct": "-2.76%",
       "target_date": "20260119",
       "min_distance": 73.658,
       "min_distance_name": "瑞达期货-20251020-20251107",
@@ -1325,9 +1325,9 @@
     },
     {
       "code": "002093",
-      "name": "002093",
-      "price": "",
-      "change_pct": "",
+      "name": "国脉科技",
+      "price": "10.53",
+      "change_pct": "-1.59%",
       "target_date": "20260119",
       "min_distance": 73.9688,
       "min_distance_name": "中信证券-20240708-20240730",
@@ -1385,9 +1385,9 @@
     },
     {
       "code": "601698",
-      "name": "601698",
-      "price": "",
-      "change_pct": "",
+      "name": "中国卫通",
+      "price": "35.64",
+      "change_pct": "-2.52%",
       "target_date": "20260119",
       "min_distance": 74.0803,
       "min_distance_name": "微芯生物-20250527-20250620",
@@ -1445,9 +1445,9 @@
     },
     {
       "code": "300965",
-      "name": "300965",
-      "price": "",
-      "change_pct": "",
+      "name": "恒宇信通",
+      "price": "56.12",
+      "change_pct": "-1.53%",
       "target_date": "20260119",
       "min_distance": 74.1882,
       "min_distance_name": "瑞达期货-20251020-20251107",
@@ -1505,9 +1505,9 @@
     },
     {
       "code": "002651",
-      "name": "002651",
-      "price": "",
-      "change_pct": "",
+      "name": "利君股份",
+      "price": "9.97",
+      "change_pct": "-1.09%",
       "target_date": "20260119",
       "min_distance": 74.3033,
       "min_distance_name": "中信证券-20240708-20240730",
