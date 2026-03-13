@@ -1,0 +1,18 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# IDE
+.vscode/
+.idea/
+
+# Memory (local only)
+.memory/
+
+# WorkBuddy internal
+.workbuddy/
+.codebuddy/

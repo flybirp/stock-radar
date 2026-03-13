@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>选股雷达 - 股票新闻追踪</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --bg-card: #161b22;
+    --bg-hover: #1c2333;
+    --border: #30363d;
+    --text: #e6edf3;
+    --text-dim: #8b949e;
+    --accent: #58a6ff;
+    --green: #3fb950;
+    --red: #f85149;
+    --orange: #d29922;
+    --purple: #bc8cff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* Header */
+  .header {
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border);
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(12px);
+  }
+  .header h1 {
+    font-size: 20px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .header h1 .dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--green);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+  .header-meta {
+    font-size: 13px;
+    color: var(--text-dim);
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+  .header-meta .tag {
+    background: rgba(88,166,255,0.12);
+    color: var(--accent);
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  /* Stats bar */
+  .stats-bar {
+    display: flex;
+    gap: 16px;
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--border);
+    overflow-x: auto;
+  }
+  .stat-chip {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 16px;
+    min-width: 140px;
+    flex-shrink: 0;
+  }
+  .stat-chip .label { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px; }
+  .stat-chip .value { font-size: 20px; font-weight: 700; margin-top: 2px; }
+
+  /* Search / Filter */
+  .toolbar {
+    padding: 12px 24px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+  .search-box {
+    flex: 1;
+    max-width: 360px;
+    position: relative;
+  }
+  .search-box input {
+    width: 100%;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 12px 8px 36px;
+    color: var(--text);
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .search-box input:focus { border-color: var(--accent); }
+  .search-box::before {
+    content: "\1F50D";
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    opacity: 0.5;
+  }
+  .btn {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .btn:hover { background: var(--bg-hover); border-color: var(--accent); }
+  .btn-primary {
+    background: rgba(88,166,255,0.15);
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* Table */
+  .table-container {
+    padding: 0 24px 24px;
+    overflow-x: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  thead th {
+    background: var(--bg-card);
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 65px;
+    z-index: 10;
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+  }
+  thead th:hover { color: var(--accent); }
+  thead th .sort-arrow { font-size: 10px; margin-left: 4px; }
+
+  tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background 0.15s;
+    cursor: pointer;
+  }
+  tbody tr:hover { background: var(--bg-hover); }
+  tbody tr.expanded { background: rgba(88,166,255,0.05); }
+
+  tbody td {
+    padding: 12px 14px;
+    vertical-align: top;
+  }
+
+  .stock-code {
+    font-family: "SF Mono", "Fira Code", monospace;
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 13px;
+  }
+  .stock-name {
+    font-weight: 600;
+    font-size: 15px;
+  }
+  .stock-price {
+    font-family: "SF Mono", "Fira Code", monospace;
+    font-weight: 600;
+  }
+  .change-up { color: var(--red); }
+  .change-down { color: var(--green); }
+  .change-flat { color: var(--text-dim); }
+
+  .distance-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .distance-bar .bar {
+    flex: 1;
+    height: 6px;
+    background: var(--border);
+    border-radius: 3px;
+    max-width: 80px;
+    overflow: hidden;
+  }
+  .distance-bar .bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.3s;
+  }
+  .distance-val {
+    font-family: "SF Mono", "Fira Code", monospace;
+    font-size: 13px;
+    color: var(--text-dim);
+    min-width: 50px;
+  }
+
+  .match-tag {
+    display: inline-block;
+    background: rgba(188,140,255,0.12);
+    color: var(--purple);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .news-count {
+    background: rgba(88,166,255,0.12);
+    color: var(--accent);
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  /* Expanded news panel */
+  .news-panel {
+    display: none;
+  }
+  .news-panel.show {
+    display: table-row;
+  }
+  .news-panel td {
+    padding: 0 14px 16px 14px;
+    background: rgba(88,166,255,0.03);
+  }
+  .news-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 10px;
+    padding-top: 8px;
+  }
+  .news-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+    transition: all 0.2s;
+  }
+  .news-item:hover {
+    border-color: var(--accent);
+    transform: translateY(-1px);
+  }
+  .news-item a {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    display: block;
+    line-height: 1.5;
+  }
+  .news-item a:hover { color: var(--accent); }
+  .news-meta {
+    display: flex;
+    gap: 12px;
+    margin-top: 6px;
+    font-size: 12px;
+    color: var(--text-dim);
+  }
+  .no-news {
+    color: var(--text-dim);
+    font-style: italic;
+    padding: 12px 0;
+  }
+
+  /* Rank badge */
+  .rank {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px; height: 26px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .rank-1 { background: #ffd700; color: #000; }
+  .rank-2 { background: #c0c0c0; color: #000; }
+  .rank-3 { background: #cd7f32; color: #fff; }
+  .rank-other { background: var(--border); color: var(--text-dim); }
+
+  /* Loading */
+  .loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 24px;
+    color: var(--text-dim);
+  }
+  .spinner {
+    width: 36px; height: 36px;
+    border: 3px solid var(--border);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin-bottom: 16px;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 24px;
+    color: var(--text-dim);
+    font-size: 12px;
+    border-top: 1px solid var(--border);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .header { flex-direction: column; gap: 12px; text-align: center; }
+    .header-meta { flex-wrap: wrap; justify-content: center; }
+    .stats-bar { flex-wrap: nowrap; }
+    .news-list { grid-template-columns: 1fr; }
+    .toolbar { flex-wrap: wrap; }
+    .search-box { max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1><span class="dot"></span>选股雷达</h1>
+  <div class="header-meta">
+    <span id="meta-source" class="tag">-</span>
+    <span id="meta-time">-</span>
+    <span id="meta-count">-</span>
+  </div>
+</div>
+
+<div class="stats-bar" id="stats-bar"></div>
+
+<div class="toolbar">
+  <div class="search-box">
+    <input type="text" id="search-input" placeholder="搜索代码或名称..." oninput="filterTable()" />
+  </div>
+  <button class="btn" onclick="toggleAllNews()">展开/折叠全部新闻</button>
+  <button class="btn btn-primary" onclick="location.reload()">刷新数据</button>
+</div>
+
+<div class="table-container">
+  <div class="loading" id="loading">
+    <div class="spinner"></div>
+    <span>加载数据中...</span>
+  </div>
+  <table id="stock-table" style="display:none">
+    <thead>
+      <tr>
+        <th onclick="sortTable('rank')">排名 <span class="sort-arrow"></span></th>
+        <th onclick="sortTable('code')">代码 <span class="sort-arrow"></span></th>
+        <th onclick="sortTable('name')">名称 <span class="sort-arrow"></span></th>
+        <th onclick="sortTable('price')">最新价 <span class="sort-arrow"></span></th>
+        <th onclick="sortTable('change')">涨跌幅 <span class="sort-arrow"></span></th>
+        <th onclick="sortTable('distance')">匹配距离 <span class="sort-arrow"></span></th>
+        <th>匹配模式</th>
+        <th>新闻</th>
+      </tr>
+    </thead>
+    <tbody id="table-body"></tbody>
+  </table>
+</div>
+
+<div class="footer">
+  <p>数据来源：东方财富 | 新闻仅供参考，不构成投资建议</p>
+  <p>定时更新脚本: <code>python3.10 fetch_stock_news.py</code></p>
+</div>
+
+<script>
+let stockData = null;
+let allExpanded = false;
+let currentSort = { key: 'rank', asc: true };
+
+// 加载 JSON 数据
+async function loadData() {
+  try {
+    const resp = await fetch('stock_data.json?t=' + Date.now());
+    stockData = await resp.json();
+    renderPage();
+  } catch (e) {
+    document.getElementById('loading').innerHTML = `
+      <div style="color:var(--red);font-size:16px;">加载失败</div>
+      <p style="margin-top:8px;">请先运行 <code>python3.10 fetch_stock_news.py</code> 生成数据</p>
+      <p style="margin-top:4px;font-size:12px;">${e.message}</p>
+    `;
+  }
+}
+
+function renderPage() {
+  // Meta
+  document.getElementById('meta-source').textContent = stockData.csv_source;
+  document.getElementById('meta-time').textContent = '更新: ' + stockData.generated_at;
+  document.getElementById('meta-count').textContent = stockData.total_stocks + ' 只股票';
+
+  // Stats
+  const stocks = stockData.stocks;
+  const totalNews = stocks.reduce((sum, s) => sum + s.news.length, 0);
+  const avgDist = stocks.length > 0
+    ? (stocks.reduce((sum, s) => sum + s.min_distance, 0) / stocks.length).toFixed(2)
+    : '0';
+
+  // Count up/down
+  let upCount = 0, downCount = 0;
+  stocks.forEach(s => {
+    const pct = parseFloat(s.change_pct);
+    if (pct > 0) upCount++;
+    else if (pct < 0) downCount++;
+  });
+
+  document.getElementById('stats-bar').innerHTML = `
+    <div class="stat-chip">
+      <div class="label">股票总数</div>
+      <div class="value" style="color:var(--accent)">${stocks.length}</div>
+    </div>
+    <div class="stat-chip">
+      <div class="label">新闻总数</div>
+      <div class="value">${totalNews}</div>
+    </div>
+    <div class="stat-chip">
+      <div class="label">平均匹配距离</div>
+      <div class="value">${avgDist}</div>
+    </div>
+    <div class="stat-chip">
+      <div class="label">涨 / 跌</div>
+      <div class="value"><span style="color:var(--red)">${upCount}</span> / <span style="color:var(--green)">${downCount}</span></div>
+    </div>
+  `;
+
+  renderTable(stocks);
+}
+
+function renderTable(stocks) {
+  const tbody = document.getElementById('table-body');
+  const maxDist = Math.max(...stocks.map(s => s.min_distance), 1);
+
+  let html = '';
+  stocks.forEach((s, i) => {
+    const rank = i + 1;
+    const rankClass = rank <= 3 ? `rank-${rank}` : 'rank-other';
+
+    // Price color
+    const pct = parseFloat(s.change_pct) || 0;
+    const changeClass = pct > 0 ? 'change-up' : pct < 0 ? 'change-down' : 'change-flat';
+    const priceClass = changeClass;
+
+    // Distance bar
+    const distPct = Math.min((s.min_distance / maxDist) * 100, 100);
+    const distColor = distPct < 33 ? 'var(--green)' : distPct < 66 ? 'var(--orange)' : 'var(--red)';
+
+    // Match name - extract key part
+    const matchName = s.min_distance_name || '-';
+
+    html += `
+      <tr onclick="toggleNews('news-${i}')" data-code="${s.code}" data-name="${s.name}">
+        <td><span class="rank ${rankClass}">${rank}</span></td>
+        <td><span class="stock-code">${s.code}</span></td>
+        <td><span class="stock-name">${s.name}</span></td>
+        <td><span class="stock-price ${priceClass}">${s.price || '-'}</span></td>
+        <td><span class="${changeClass}" style="font-weight:600">${s.change_pct || '-'}</span></td>
+        <td>
+          <div class="distance-bar">
+            <span class="distance-val">${s.min_distance.toFixed(2)}</span>
+            <div class="bar"><div class="bar-fill" style="width:${distPct}%;background:${distColor}"></div></div>
+          </div>
+        </td>
+        <td><span class="match-tag" title="${matchName}">${matchName}</span></td>
+        <td><span class="news-count">${s.news.length} 条</span></td>
+      </tr>
+      <tr class="news-panel" id="news-${i}">
+        <td colspan="8">
+          ${renderNews(s.news)}
+        </td>
+      </tr>
+    `;
+  });
+
+  tbody.innerHTML = html;
+  document.getElementById('loading').style.display = 'none';
+  document.getElementById('stock-table').style.display = 'table';
+}
+
+function renderNews(news) {
+  if (!news || news.length === 0) {
+    return '<div class="no-news">暂无相关新闻</div>';
+  }
+  let html = '<div class="news-list">';
+  news.forEach(n => {
+    html += `
+      <div class="news-item">
+        <a href="${n.url}" target="_blank" rel="noopener">${n.title}</a>
+        <div class="news-meta">
+          <span>${n.date || ''}</span>
+          <span>${n.source || ''}</span>
+        </div>
+      </div>
+    `;
+  });
+  html += '</div>';
+  return html;
+}
+
+function toggleNews(id) {
+  const panel = document.getElementById(id);
+  const row = panel.previousElementSibling;
+  if (panel.classList.contains('show')) {
+    panel.classList.remove('show');
+    row.classList.remove('expanded');
+  } else {
+    panel.classList.add('show');
+    row.classList.add('expanded');
+  }
+}
+
+function toggleAllNews() {
+  allExpanded = !allExpanded;
+  document.querySelectorAll('.news-panel').forEach(el => {
+    if (allExpanded) {
+      el.classList.add('show');
+      el.previousElementSibling.classList.add('expanded');
+    } else {
+      el.classList.remove('show');
+      el.previousElementSibling.classList.remove('expanded');
+    }
+  });
+}
+
+function filterTable() {
+  const query = document.getElementById('search-input').value.toLowerCase();
+  const rows = document.querySelectorAll('#table-body tr');
+  rows.forEach(row => {
+    if (row.classList.contains('news-panel')) {
+      // news panel visibility follows its parent row
+      return;
+    }
+    const code = (row.dataset.code || '').toLowerCase();
+    const name = (row.dataset.name || '').toLowerCase();
+    const match = !query || code.includes(query) || name.includes(query);
+    row.style.display = match ? '' : 'none';
+    // Also hide corresponding news panel
+    const nextRow = row.nextElementSibling;
+    if (nextRow && nextRow.classList.contains('news-panel')) {
+      nextRow.style.display = match ? '' : 'none';
+    }
+  });
+}
+
+function sortTable(key) {
+  if (!stockData) return;
+  const stocks = [...stockData.stocks];
+
+  if (currentSort.key === key) {
+    currentSort.asc = !currentSort.asc;
+  } else {
+    currentSort.key = key;
+    currentSort.asc = true;
+  }
+
+  stocks.sort((a, b) => {
+    let va, vb;
+    switch (key) {
+      case 'rank':
+      case 'distance':
+        va = a.min_distance; vb = b.min_distance; break;
+      case 'code':
+        va = a.code; vb = b.code; break;
+      case 'name':
+        va = a.name; vb = b.name; break;
+      case 'price':
+        va = parseFloat(a.price) || 0; vb = parseFloat(b.price) || 0; break;
+      case 'change':
+        va = parseFloat(a.change_pct) || 0; vb = parseFloat(b.change_pct) || 0; break;
+      default:
+        va = a.min_distance; vb = b.min_distance;
+    }
+    if (typeof va === 'string') return currentSort.asc ? va.localeCompare(vb) : vb.localeCompare(va);
+    return currentSort.asc ? va - vb : vb - va;
+  });
+
+  renderTable(stocks);
+}
+
+// Init
+loadData();
+</script>
+
+</body>
+</html>
