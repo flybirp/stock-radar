@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>主力意图与散户心态分析报告</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: #0a0a0f;
+    color: #d4d4d8;
+    line-height: 1.8;
+    padding: 20px;
+  }
+  .container { max-width: 960px; margin: 0 auto; }
+  h1 {
+    text-align: center;
+    font-size: 28px;
+    color: #f0f0f5;
+    margin: 30px 0 10px;
+    letter-spacing: 2px;
+  }
+  .subtitle {
+    text-align: center;
+    color: #71717a;
+    font-size: 14px;
+    margin-bottom: 40px;
+  }
+  .stock-card {
+    background: #18181b;
+    border: 1px solid #27272a;
+    border-radius: 12px;
+    margin-bottom: 28px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .stock-card:hover { border-color: #3f3f46; }
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 24px;
+    cursor: pointer;
+    user-select: none;
+    background: #1c1c21;
+  }
+  .card-header:hover { background: #222228; }
+  .stock-name {
+    font-size: 20px;
+    font-weight: 700;
+    color: #fafafa;
+  }
+  .stock-code {
+    font-size: 14px;
+    color: #71717a;
+    margin-left: 8px;
+  }
+  .stock-meta {
+    display: flex;
+    gap: 16px;
+    font-size: 13px;
+  }
+  .meta-tag {
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-weight: 500;
+  }
+  .meta-date { background: #1e293b; color: #60a5fa; }
+  .meta-buy { background: #14332b; color: #34d399; }
+  .meta-gain { background: #332614; color: #fbbf24; }
+  .arrow {
+    color: #52525b;
+    font-size: 18px;
+    transition: transform 0.3s;
+  }
+  .stock-card.open .arrow { transform: rotate(180deg); }
+  .card-body {
+    display: none;
+    padding: 20px 24px 28px;
+    border-top: 1px solid #27272a;
+  }
+  .stock-card.open .card-body { display: block; }
+  .phase {
+    margin-bottom: 22px;
+  }
+  .phase-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #a1a1aa;
+    margin-bottom: 8px;
+    padding-left: 12px;
+    border-left: 3px solid #3b82f6;
+  }
+  .phase-title.red { border-left-color: #ef4444; }
+  .phase-title.green { border-left-color: #22c55e; }
+  .phase-title.yellow { border-left-color: #eab308; }
+  .phase-title.purple { border-left-color: #a855f7; }
+  .phase p {
+    font-size: 15px;
+    color: #a1a1aa;
+    margin-bottom: 6px;
+    text-indent: 2em;
+  }
+  .highlight { color: #f0f0f5; font-weight: 500; }
+  .up { color: #f87171; }
+  .down { color: #4ade80; }
+  .warn { color: #fbbf24; }
+  .toc {
+    background: #18181b;
+    border: 1px solid #27272a;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 36px;
+  }
+  .toc h2 {
+    font-size: 18px;
+    color: #fafafa;
+    margin-bottom: 12px;
+  }
+  .toc-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 6px;
+    list-style: none;
+  }
+  .toc-list li a {
+    color: #60a5fa;
+    text-decoration: none;
+    font-size: 14px;
+    padding: 4px 0;
+    display: block;
+  }
+  .toc-list li a:hover { color: #93c5fd; text-decoration: underline; }
+  .result-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-left: 6px;
+  }
+  .result-tag.profit { background: #14532d; color: #4ade80; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>主力意图与散户心态分析报告</h1>
+<p class="subtitle">基于量价关系的行为金融学解读 | 共23个标的/时间段</p>
+
+<div class="toc">
+  <h2>目录</h2>
+  <ol class="toc-list">
+    <li><a href="#s1">宁波韵升 (600366) 异动0526 买入0805</a></li>
+    <li><a href="#s2">宁波韵升 (600366) 异动0526 买入0626</a></li>
+    <li><a href="#s3">微芯生物 (688321) 异动0519 买入0620</a></li>
+    <li><a href="#s4">方正科技 (600601) 异动0603 买入0723</a></li>
+    <li><a href="#s5">方正科技 (600601) 异动0603 买入0623</a></li>
+    <li><a href="#s6">澄天伟业 (300689) 异动0515 买入0716</a></li>
+    <li><a href="#s7">国轩高科 (002074) 异动0423 买入0801</a></li>
+    <li><a href="#s8">国轩高科 (002074) 异动0423 买入0603</a></li>
+    <li><a href="#s9">野马电池 (605378) 异动0604 买入0731</a></li>
+    <li><a href="#s10">光电股份 (600184) 异动0609 买入0710</a></li>
+    <li><a href="#s11">光电股份 (600184) 异动0414 买入0610</a></li>
+    <li><a href="#s12">新瀚新材 (301076) 异动0623 买入0801</a></li>
+    <li><a href="#s13">新瀚新材 (301076) 异动0415 买入0801</a></li>
+    <li><a href="#s14">昂利康 (002940) 异动0509 买入0711</a></li>
+    <li><a href="#s15">航天发展 (000547) 异动1017 买入1112</a></li>
+    <li><a href="#s16">航天发展 (000547) 异动0731 买入1112</a></li>
+    <li><a href="#s17">瑞达期货 (002961) 异动1013 买入1107</a></li>
+    <li><a href="#s18">瑞达期货 (002961) 异动0804 买入1107</a></li>
+    <li><a href="#s19">中国电建 (601669) 异动1224 买入0213</a></li>
+    <li><a href="#s20">中国核建 (601611) 异动0710 买入1203</a></li>
+    <li><a href="#s21">节能风电 (601016) 异动0814 买入0202</a></li>
+    <li><a href="#s22">华东数控 (002248) 异动0721 买入1017</a></li>
+    <li><a href="#s23">华东数控 (002248) 异动1125 买入0202</a></li>
+  </ol>
+</div>
+
+<!-- ===================== 1. 宁波韵升 买入0805 ===================== -->
+<div class="stock-card open" id="s1">
+  <div class="card-header" onclick="this.parentElement.classList.toggle('open')">
+    <div>
+      <span class="stock-name">宁波韵升</span>
+      <span class="stock-code">600366</span>
+      <span class="result-tag profit">买入后最大+56.9%</span>
+    </div>
+    <div class="stock-meta">
+      <span class="meta-tag meta-date">异动 2025-05-26</span>
+      <span class="meta-tag meta-buy">买入 2025-08-05</span>
+    </div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="card-body">
+    <div class="phase">
+      <div class="phase-title">中长期趋势：半年横盘震荡，散户逐步离场</div>
+      <p>2024年11月至2025年5月，宁波韵升在<span class="highlight">6.85~9.46元</span>区间反复震荡，整体涨幅仅10%。日均换手率仅2.5%，属于典型的低关注度时期。2025年2月曾出现一波从7.85拉升至8.73的脉冲行情（+11.2%），伴随换手率骤升至4.36%，但随即3~4月连续回调15%以上，把跟风盘彻底洗出。这段时间主力的意图非常明确：<span class="warn">利用震荡箱体反复收集筹码</span>，每次拉升后故意放任回落，让散户在"涨了不走、跌了割肉"的循环中逐步交出廉价筹码。</p>
+    </div>
+    <div class="phase">
+      <div class="phase-title red">异动初期（5/26~6/4）：地量缩筛，最后的洗盘</div>
+      <p>5月26日开始，成交量骤降至10~13万手（量比仅0.4x），换手率跌至1%附近。价格在7.74~8.03的极窄空间内做无意义波动。这是主力<span class="highlight">最后的吸筹阶段</span>——用极度沉闷的行情逼退最后一批耐不住寂寞的散户。此时散户心态是："这票半年没动静了，横盘得受不了，换别的做吧。"正是这种心态让主力以极低成本完成了最终的筹码锁定。</p>
+    </div>
+    <div class="phase">
+      <div class="phase-title green">第一波拉升（6/5~6/12）：试盘+连板确认</div>
+      <p>6月5日突然放量到53万手（量比2.0x），收盘<span class="up">+4.2%</span>站上8.35，这是主力的<span class="highlight">试盘动作</span>，测试上方抛压。次日小幅回调确认支撑后，6月9日再度放量突破。6月11~12日连续两个涨停板，成交量从153万手飙升至198万手（量比5.7~7.4x），换手率达14~19%。散户此刻开始注意到这只票，但大部分人的反应是"已经涨了这么多还敢追吗"——典型的踏空恐惧。</p>
+    </div>
+    <div class="phase">
+      <div class="phase-title red">高位震荡洗盘（6/13~6/26）：巨量分歧，恐慌出逃</div>
+      <p>6月13日冲高至11.58后留下长上影线，收11.10。随后6月18~19日连续两天<span class="down">暴跌-9.9%和-8.6%</span>，两天市值蒸发近20%！成交量维持在188~224万手的巨量水平，换手率超过20%。这是<span class="warn">经典的主力洗盘手法</span>：先快速拉高吸引跟风盘，再凶狠砸盘制造恐慌。6月5号之后追涨买入的散户此时账面已经全面亏损，心态从贪婪变成恐惧："完了完了，主力跑了，赶紧卖！"大量割肉盘涌出，正好被主力悉数吃下。</p>
+    </div>
+    <div class="phase">
+      <div class="phase-title yellow">平台整理（6/23~8/5）：高位换手消化，量缩价稳</div>
+      <p>6月23日至7月初，价格在9.5~10元区间反复震荡，成交量逐步从巨量回归正常。7月10~15日再次冲高至12.87后回落至11.40，又一轮洗盘。注意7月下旬至8月初，成交量从100万手逐步降至40~50万手（量比1.5~1.9x），价格稳定在11.6~12元。这说明<span class="highlight">浮筹已被充分清洗</span>，筹码已高度集中在主力手中。散户此时要么已经被洗出去了，要么被反复震荡磨得心灰意冷——"这票整天上蹿下跳但就是不走主升浪，太难做了。"</p>
+    </div>
+    <div class="phase">
+      <div class="phase-title purple">买入后验证：两个月+56.9%</div>
+      <p>8月5日买入后，第1周即从11.76拉升至14.49（<span class="up">+21.1%</span>），第2周继续冲至17.22（<span class="up">+14.8%</span>），后续最高触及18.45。前期所有的缩量横盘、暴力洗盘，目的就是为了这一刻的主升浪。追涨者几乎没有上车机会，只有在恐慌中坚持持有或在地量区间提前布局的人，才能享受到这波收益。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== 2. 宁波韵升 买入0626 ===================== -->
+<div class="stock-card" id="s2">
+  <div class="card-header" onclick="this.parentElement.classList.toggle('open')">
+    <div>
+      <span class="stock-name">宁波韵升</span>
+      <span class="stock-code">600366</span>
+      <span class="result-tag profit">买入后最大+91.6%</span>
+    </div>
+    <div class="stock-meta">
+      <span class="meta-tag meta-date">异动 2025-05-26</span>
+      <span class="meta-tag meta-buy">买入 2025-06-26</span>
+    </div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="card-body">
+    <div class="phase">
+      <div class="phase-title">更早介入点：恐慌砸盘后的黄金坑</div>
+      <p>同一只票，更早的买入时机在6月26日——恰好是6/18~6/19暴跌洗盘之后、价格在9.5~9.8企稳的位置。此时散户的恐慌情绪达到顶峰，"打死也不碰这只票了"是绝大多数人的想法。而主力正是在这个位置完成了<span class="highlight">洗盘后的二次吸筹</span>。6/23~6/26连续四天成交量从87万逐步降至73万，价格窄幅波动在9.5~9.8，这是经典的"恐慌之后的地量企稳"形态。</p>
+    </div>
+    <div class="phase">
+      <div class="phase-title green">买入后验证：三个月接近翻倍</div>
+      <p>从9.63买入后，后续最高达到18.45，<span class="up">涨幅高达91.6%</span>。第7~8周是主升浪的加速阶段，周涨幅分别达到+23.7%和+14.8%。这个案例完美诠释了<span class="warn">"别人恐惧时我贪婪"</span>的投资哲学——恐慌砸盘造成的黄金坑，往往是最佳买入时机。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== 3. 微芯生物 ===================== -->
+<div class="stock-card" id="s3">
+  <div class="card-header" onclick="this.parentElement.classList.toggle('open')">
+    <div>
+      <span class="stock-name">微芯生物</span>
+      <span class="stock-code">688321</span>
+      <span class="result-tag profit">买入后最大+112.5%</span>
+    </div>
+    <div class="stock-meta">
+      <span class="meta-tag meta-date">异动 2025-05-19</span>
+      <span class="meta-tag meta-buy">买入 2025-06-20</span>
+    </div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="card-body">
+    <div class="phase">
+      <div class="phase-title">中长期趋势：半年阴跌-22%，散户绝望离场</div>
+      <p>从2024年11月的22.42元一路下跌至2025年1月的14.86元低点，跌幅超过33%。日均换手率仅1%左右，关注度极低。2025年2月小幅反弹至18.86后再度回落，到5月中旬又跌回17.46。半年持续阴跌让散户彻底失去信心：<span class="warn">"创新药泡沫破了，这票没希望了。"</span>主力则在这段低迷期持续低位吸筹，利用散户的绝望情绪以极低成本收集筹码。</p>
+    </div>
+    <div class="phase">
+      <div class="phase-title green">突袭式拉升（5/28~6/9）：两周从17到24</div>
+      <p>5月28日突然放量（量比2.8x），收盘+6.1%突破18元。次日继续暴涨<span class="up">+7.9%</span>至19.69。6月3日更是一根大阳线<span class="up">+13.1%</span>直接冲至22.40，量比达到6.7倍！此后6/4~6/9维持在22~24区间高位震荡。主力的意图是<span class="highlight">快速脱离成本区</span>，不给散户低位上车的机会。两周内股价从17涨到24，涨幅超过40%，场外观望者目瞪口呆。</p>
+    </div>
+    <div class="phase">
+      <div class="phase-title red">高位洗盘（6/10~6/20）：阶梯式下跌消磨信心</div>
+      <p>6月10日开始，股价从24.49区域逐级下滑：23.76→22.85→22.41→23.32→22.92→22.79→22.22→22.26→21.48→21.17。不是暴跌式洗盘，而是<span class="warn">温水煮青蛙</span>——每天跌一点，成交量从26万逐步降至7~10万。散户从"还会涨回去"的幻想，逐步变成"趋势走坏了，能保本就不错"，最终在21~22元忍无可忍割肉离场。这种阶梯式阴跌是比暴跌更有效的洗盘手法，因为它摧毁的是持股者的耐心。</p>
+    </div>
+    <div class="phase">
+      <div class="phase-title purple">买入后验证：翻倍行情</div>
+      <p>6月20日在21.17买入后，后续最高达到44.99，<span class="up">涨幅+112.5%</span>，堪称翻倍。第2周即大涨+30.4%，此后持续走高。主升浪的起点恰恰是散户最绝望的位置——连续两周阴跌后的最低点。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== 4. 方正科技 买入0723 ===================== -->
+<div class="stock-card" id="s4">
+  <div class="card-header" onclick="this.parentElement.classList.toggle('open')">
+    <div>
+      <span class="stock-name">方正科技</span>
+      <span class="stock-code">600601</span>
+      <span class="result-tag profit">买入后最大+137.2%</span>
+    </div>
+    <div class="stock-meta">
+      <span class="meta-tag meta-date">异动 2025-06-03</span>
+      <span class="meta-tag meta-buy">买入 2025-07-23</span>
+    </div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="card-body">
+    <div class="phase">
+      <div class="phase-title">中长期趋势：从炒作退潮到无人问津</div>
+      <p>2025年1月方正科技曾有过一波换手率高达11.65%的投机炒作，股价从4.21冲至5.09。但此后连续四个月缩量回调，4月换手率降至1.68%，5月更降到1.22%，成交量从486万手萎缩到50万手。<span class="warn">这是典型的"投机退潮、散户被套后失去兴趣"</span>的走势。主力则在这段时间里耐心地低位吸筹。</p>
+    </div>
+    <div class="phase">
+      <div class="phase-title green">异动启动（6/5）：一字涨停发令枪</div>
+      <p>6月5日，一根<span class="up">涨停板（+10%）</span>打破了所有沉寂，成交量回到203万手。此后在4.65~5.27区间盘整三周，主力用几次脉冲式拉升（6/11涨+3.8%、6/27涨+6.7%）配合回调（6/13跌-4.1%）反复试探上方筹码密集区。7月3日再来一个涨停确认突破。</p>
+    </div>
+    <div class="phase">
+      <div class="phase-title red">漫长的箱体折磨（7/7~7/23）：让追涨者失去耐心</div>
+      <p>7月上旬至下旬，股价在5.29~5.78区间反复波动长达三周，每天涨跌幅在1~2%之间。成交量维持在120~230万手，既不放量突破也不缩量下跌。散户的心态逐渐从兴奋变为焦躁：<span class="warn">"涨停之后就一直磨，别的票都在涨就这个不动，换股吧。"</span>这正是主力要的效果——用时间换空间，在震荡中完成高位换手。</p>
+    </div>
+    <div class="phase">
+      <div class="phase-title purple">买入后验证：五个月翻倍以上</div>
+      <p>7月23日在5.29买入后，后续最高达12.55，<span class="up">涨幅+137.2%</span>。第4~8周是主升浪集中爆发期，周涨幅频繁超过10%。所有在箱体震荡期间离场的散户都错过了这波行情。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== 5. 方正科技 买入0623 ===================== -->
+<div class="stock-card" id="s5">
+  <div class="card-header" onclick="this.parentElement.classList.toggle('open')">
+    <div>
+      <span class="stock-name">方正科技</span>
+      <span class="stock-code">600601</span>
+      <span class="result-tag profit">买入后最大+70.2%</span>
+    </div>
+    <div class="stock-meta">
+      <span class="meta-tag meta-date">异动 2025-06-03</span>
+      <span class="meta-tag meta-buy">买入 2025-06-23</span>
+    </div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="card-body">
+    <div class="phase">
+      <div class="phase-title">更早介入：涨停回调后的缩量低吸点</div>
+      <p>6月23日是6/5涨停后第一轮调整的低位。6/16~6/23成交量萎缩至92~93万手（量比0.5x），价格在4.57~4.75窄幅震荡，换手率降至2.2%。这是涨停后经过三周消化，<span class="highlight">短线浮筹基本清洗完毕</span>的信号。4.70元的买入价距离涨停前的4.22仅有11%的溢价，风险收益比极佳。</p>
+    </div>
+    <div class="phase">
+      <div class="phase-title purple">买入后验证：平稳上升到翻倍</div>
+      <p>从4.70买入，最高到8.00，<span class="up">+70.2%</span>。前5周走势较为平缓（月涨幅约15%），但第6~8周开始加速。这说明主力先完成建仓确认，再缓慢推升，最终爆发。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== 6. 澄天伟业 ===================== -->
+<div class="stock-card" id="s6">
+  <div class="card-header" onclick="this.parentElement.classList.toggle('open')">
+    <div>
+      <span class="stock-name">澄天伟业</span>
+      <span class="stock-code">300689</span>
+      <span class="result-tag profit">买入后最大+67.5%</span>
+    </div>
+    <div class="stock-meta">
+      <span class="meta-tag meta-date">异动 2025-05-15</span>
+      <span class="meta-tag meta-buy">买入 2025-07-16</span>
+    </div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="card-body">
+    <div class="phase">
+      <div class="phase-title">袖珍盘的暴力拉升：日换手率最高9%</div>
+      <p>澄天伟业流通盘仅约1万手级别，日换手率平均1.4%。2025年2月曾有一波+24%的上涨（换手率升至1.95%），但此后4~5月再度缩量回归平静。5月15日开始缓慢上行，从34元区间逐步走高。</p>
+    </div>
+    <div class="phase">
+      <div class="phase-title green">连续暴涨（6/11~6/13）：两天+37%的妖股行情</div>
+      <p>6月11日，一根<span class="up">+17%</span>的巨阳线将股价从40推至47，成交量暴增至55594手（量比3.9x）。6月13日更是直接<span class="up">20cm涨停</span>至57.29，成交量翻倍至91410手。两天时间，股价从39涨到57，涨幅达到37%！散户此刻分成两派：追涨派"这票要成妖了，赶紧上车"；观望派"涨太多了，等回调再说"。</p>
+    </div>
+    <div class="phase">
+      <div class="phase-title red">连续跌停式洗盘（6/16~6/19）：两天-17%打回原形</div>
+      <p>6月16日高开低走<span class="down">-9.9%</span>，6月17日继续暴跌<span class="down">-9.8%</span>，6月19日再跌<span class="down">-7.9%</span>。三天从57.28跌至43.73，跌幅达到24%！追涨派全部被埋，恐慌情绪弥漫：<span class="warn">"早该跑的，现在套死了。"</span>成交量维持在4.7~9.4万手的高位，说明大量恐慌盘在割肉出逃。</p>
+    </div>
+    <div class="phase">
+      <div class="phase-title yellow">长达一个月的阴跌（6/20~7/16）：从44跌到40</div>
+      <p>暴跌之后并没有立刻反弹，而是用一个月时间从44缓慢下滑至40，成交量逐步回落至正常水平。这是主力<span class="highlight">以时间消磨散户耐心</span>的经典操作。每天下跌0.5~1%，不痛不痒但积少成多。到7月中旬，即便是最有耐心的散户也开始怀疑"这票是不是废了"。</p>
+    </div>
+    <div class="phase">
+      <div class="phase-title purple">买入后验证：第4周+29%爆发</div>
+      <p>7月16日40.36买入后，前三周温和上涨。但第4周突然爆发<span class="up">+29%</span>至60.96，后续最高触及67.60。整个行情的逻辑是：暴涨→暴跌→阴跌消磨→地量企稳→再次爆发。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== 7. 国轩高科 买入0801 ===================== -->
+<div class="stock-card" id="s7">
+  <div class="card-header" onclick="this.parentElement.classList.toggle('open')">
+    <div>
+      <span class="stock-name">国轩高科</span>
+      <span class="stock-code">002074</span>
+      <span class="result-tag profit">买入后最大+73.1%</span>
+    </div>
+    <div class="stock-meta">
+      <span class="meta-tag meta-date">异动 2025-04-23</span>
+      <span class="meta-tag meta-buy">买入 2025-08-01</span>
+    </div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="card-body">
+    <div class="phase">
+      <div class="phase-title">新能源蓝筹的漫长蛰伏</div>
+      <p>2024年10月至2025年4月，国轩高科从22.66阴跌至20.04（-11.6%）。日均换手率仅1.60%，月度走势除2025年2月有一波反弹外几乎全是阴线。这是<span class="warn">机构资金在行业低谷期默默建仓</span>的经典形态。散户对新能源板块失去信心："行业产能过剩，固态电池还早，不看了。"</p>
+    </div>
+    <div class="phase">
+      <div class="phase-title green">多级火箭式拉升（5/9~6/25）</div>
+      <p>第一级：5/9涨停（<span class="up">+9.2%</span>），量比2.4x。第二级：5/20~5/21连续大涨累计+14.8%。第三级：6/23~6/25三连阳暴涨，6/24涨停+10%，6/25涨+8.1%冲至33.47。整个过程中主力采用<span class="highlight">"拉→洗→拉→洗"</span>的节奏，5/22~5/30回调洗盘，6/10~6/13再次回调。每次洗盘幅度在5~10%之间，刚好够让短线客止损离场，但不至于破坏整体上升趋势。</p>
+    </div>
+    <div class="phase">
+      <div class="phase-title red">漫长的高位平台（6/26~8/1）：一个月不涨不跌</div>
+      <p>从6月26日的32.29到8月1日的28.78，股价在28~34区间反复拉锯长达五周。成交量从255万手逐步降至38万手，主力用<span class="warn">极度无聊的走势</span>消耗所有急躁的短线资金。散户："在30块来回磨了一个月，别的新能源都在涨就它不动，不等了。"</p>
+    </div>
+    <div class="phase">
+      <div class="phase-title purple">买入后验证：两个月+73.1%</div>
+      <p>28.78买入后，第4周开始爆发（+13.5%），第5周继续大涨+9.7%，最高触及49.83。整个上涨过程中成交量从30万手飙升至240万手，说明机构开始集中拉升。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== 8. 国轩高科 买入0603 ===================== -->
+<div class="stock-card" id="s8">
+  <div class="card-header" onclick="this.parentElement.classList.toggle('open')">
+    <div>
+      <span class="stock-name">国轩高科</span>
+      <span class="stock-code">002074</span>
+      <span class="result-tag profit">买入后最大+40.4%</span>
+    </div>
+    <div class="stock-meta">
+      <span class="meta-tag meta-date">异动 2025-04-23</span>
+      <span class="meta-tag meta-buy">买入 2025-06-03</span>
+    </div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="card-body">
+    <div class="phase">
+      <div class="phase-title">第一轮洗盘后的低吸机会</div>
+      <p>6月3日是5/21涨停后回调消化两周的位置。从26.56高点回落至24.41（5/30），跌幅约8%，随后在24~24.5企稳。成交量从128万手降至40万手，浮筹基本洗净。24.48买入后，第4周爆发性大涨+16.4%，最高到34.38（<span class="up">+40.4%</span>）。这个介入点比0801更早但涨幅略小，因为后续还要经历6/26~7月的高位横盘消化期。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== 9. 野马电池 ===================== -->
+<div class="stock-card" id="s9">
+  <div class="card-header" onclick="this.parentElement.classList.toggle('open')">
+    <div>
+      <span class="stock-name">野马电池</span>
+      <span class="stock-code">605378</span>
+      <span class="result-tag profit">买入后最大+63.9%</span>
+    </div>
+    <div class="stock-meta">
+      <span class="meta-tag meta-date">异动 2025-06-04</span>
+      <span class="meta-tag meta-buy">买入 2025-07-31</span>
+    </div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="card-body">
+    <div class="phase">
+      <div class="phase-title">前期过山车：2月大涨+27%后被4月腰斩</div>
+      <p>2025年2月野马电池从14.30暴涨至20.26（+27.2%），换手率飙升至6.65%。但随后3~4月连续回调27%至15.11，几乎把涨幅全部吐回。<span class="warn">散户2月追涨买入者全部深套</span>，心态从狂热变绝望，到5~6月已不再关注这只票。</p>
+    </div>
+    <div class="phase">
+      <div class="phase-title green">连板启动（6/25~6/30）：三天+37%</div>
+      <p>6/25涨停+10%至20.03，6/27再次涨停+10%至22.30，6/30继续大涨+5.8%至23.59。换手率飙升至6~12%。主力选择在散户完全失去关注的时候突然发动，不给低位上车机会。</p>
+    </div>
+    <div class="phase">
+      <div class="phase-title red">一个月的痛苦横盘（7/1~7/31）：从23.59跌回19.66</div>
+      <p>7月1日暴跌<span class="down">-8.2%</span>后，股价在20~22区间横盘一整个月。7月中下旬进一步下滑至20.27~20.05，成交量降至3.8~4.5万手（量比0.5~0.6x）。散户心态："又是假突破，涨停之后就开始套人。"到7/31收19.66，距离6/25涨停前的价格已经接近，<span class="highlight">追涨盘全部被洗出</span>。</p>
+    </div>
+    <div class="phase">
+      <div class="phase-title purple">买入后验证：第2周直接+20%</div>
+      <p>19.66买入后仅一周缓冲，第2周即大涨+20.4%至25.13，后续最高32.23（<span class="up">+63.9%</span>）。地量横盘的尽头就是主升浪的起点。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== 10. 光电股份 买入0710 ===================== -->
+<div class="stock-card" id="s10">
+  <div class="card-header" onclick="this.parentElement.classList.toggle('open')">
+    <div>
+      <span class="stock-name">光电股份</span>
+      <span class="stock-code">600184</span>
+      <span class="result-tag profit">买入后最大+58.0%</span>
+    </div>
+    <div class="stock-meta">
+      <span class="meta-tag meta-date">异动 2025-06-09</span>
+      <span class="meta-tag meta-buy">买入 2025-07-10</span>
+    </div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="card-body">
+    <div class="phase">
+      <div class="phase-title">涨停后回调洗盘的教科书案例</div>
+      <p>6月25日涨停<span class="up">+10%</span>至16.02后，连续三天高位放巨量（60~85万手，换手率12~17%）。6/26冲高17.62后回落至16.65，6/27~7/4逐步回落至16.12。7/7~7/10继续下滑至15.82，成交量从巨量回归至12~23万手。<span class="highlight">涨停后两周的回调正好消化了追涨盘</span>，15.82是这波回调的低点。散户在涨停日追高买入后被套住2~3周，到7/10已经心灰意冷选择割肉。</p>
+    </div>
+    <div class="phase">
+      <div class="phase-title purple">买入后验证：稳步上行到+58%</div>
+      <p>15.82买入后呈阶梯式上涨，最高25.00。第3~5周是主要上涨段，说明主力在涨停洗盘后从容推高。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== 11. 光电股份 买入0610 ===================== -->
+<div class="stock-card" id="s11">
+  <div class="card-header" onclick="this.parentElement.classList.toggle('open')">
+    <div>
+      <span class="stock-name">光电股份</span>
+      <span class="stock-code">600184</span>
+      <span class="result-tag profit">买入后最大+73.1%</span>
+    </div>
+    <div class="stock-meta">
+      <span class="meta-tag meta-date">异动 2025-04-14</span>
+      <span class="meta-tag meta-buy">买入 2025-06-10</span>
+    </div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="card-body">
+    <div class="phase">
+      <div class="phase-title">更长周期的视角：从涨停到深度回调的完整洗盘</div>
+      <p>4/29大涨+7.1%启动，5/12涨停+10%冲至16.05。但此后连续四天暴跌（-5.2%、-2.9%、-3.7%、-1.5%），从16.05打回14.01，跌幅13%。5月下旬至6月初，股价在13.6~14.3反复磨底，成交量降至6~9万手。6月10日<span class="down">-4.2%</span>跌至13.19，是一个恐慌性的"最后一跌"。</p>
+      <p>此时散户的心理画像是：5月12日涨停追入者已被套10~15%，经过一个月的煎熬终于在13元出认赔离场。主力正是在<span class="highlight">这个恐慌出清的位置完成最后吸筹</span>，随后开启第二波上涨，最终达到22.83（+73.1%）。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== 12. 新瀚新材 买入0801 (异动0623) ===================== -->
+<div class="stock-card" id="s12">
+  <div class="card-header" onclick="this.parentElement.classList.toggle('open')">
+    <div>
+      <span class="stock-name">新瀚新材</span>
+      <span class="stock-code">301076</span>
+      <span class="result-tag profit">买入后最大+123.5%</span>
+    </div>
+    <div class="stock-meta">
+      <span class="meta-tag meta-date">异动 2025-06-23</span>
+      <span class="meta-tag meta-buy">买入 2025-08-01</span>
+    </div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="card-body">
+    <div class="phase">
+      <div class="phase-title">超高换手率的小盘妖股</div>
+      <p>新瀚新材日均换手率高达14.82%，是典型的游资主导型小盘股。2024年12月曾有过+28.6%的月度大涨。2025年4月又有+48.3%的暴涨。但每次大涨后都是暴跌——3月-16.6%，5月下旬至6月中旬持续下跌，从35.22高点一路跌至24.33（-31%）。<span class="warn">这种票的特点是：暴涨暴跌都很凶，散户容易在最高点追入然后被套。</span></p>
+    </div>
+    <div class="phase">
+      <div class="phase-title green">地量企稳后的突然启动</div>
+      <p>6/23~7/7连续两周成交量萎缩至2.4~4.5万手（量比0.2~0.5x），换手率降至3~5%，是历史极低水平。价格稳定在25~26.5区间。7/8突然放量涨4.8%，7/11再涨4.9%，7/14暴涨<span class="up">+12.6%</span>（量比2.4x）冲至30.82。典型的<span class="highlight">地量后突然起爆</span>模式。</p>
+    </div>
+    <div class="phase">
+      <div class="phase-title red">高位震荡消化（7/15~8/1）：从31缩回30</div>
+      <p>冲高后并未继续拉升，而是在29~32区间用两周多时间消化。7/28再次放量涨8.8%至32.06后又回落至29.69。到8/1，成交量降至5.9万手（量比0.5x），浮筹再次清洗完毕。</p>
+    </div>
+    <div class="phase">
+      <div class="phase-title purple">买入后验证：一周+40%，两个月翻倍</div>
+      <p>29.69买入后，第1周即暴涨<span class="up">+40.2%</span>至43.32！第2周继续+14.6%至56.93，最高66.36（<span class="up">+123.5%</span>）。小盘股一旦主力完成洗盘准备，爆发力惊人。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== 13. 新瀚新材 买入0801 (异动0415) ===================== -->
+<div class="stock-card" id="s13">
+  <div class="card-header" onclick="this.parentElement.classList.toggle('open')">
+    <div>
+      <span class="stock-name">新瀚新材</span>
+      <span class="stock-code">301076</span>
+      <span class="result-tag profit">买入后最大+123.5%</span>
+    </div>
+    <div class="stock-meta">
+      <span class="meta-tag meta-date">异动 2025-04-15</span>
+      <span class="meta-tag meta-buy">买入 2025-08-01</span>
+    </div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="card-body">
+    <div class="phase">
+      <div class="phase-title">更长周期视角：三个半月的震荡建仓</div>
+      <p>从4/15到8/1长达三个半月。4月下旬经历了20cm涨停（4/24、4/29各一个）和暴跌的剧烈震荡，5月又经历了+16.6%涨停和-11.2%暴跌的反复折腾。整个5~6月股价在25~35之间做了一个巨大的头肩形态，换手率长期维持在10~30%。</p>
+      <p>这种极端高换手的走势说明筹码在<span class="highlight">反复从散户手中流向主力</span>——每次暴涨吸引散户追涨，每次暴跌迫使散户割肉。经过三个多月的反复洗盘，到7月底终于完成筹码收集，8月开始主升浪。同样的买入价29.69，同样的+123.5%涨幅，只是异动起始点更早。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== 14. 昂利康 ===================== -->
+<div class="stock-card" id="s14">
+  <div class="card-header" onclick="this.parentElement.classList.toggle('open')">
+    <div>
+      <span class="stock-name">昂利康</span>
+      <span class="stock-code">002940</span>
+      <span class="result-tag profit">买入后最大+79.6%</span>
+    </div>
+    <div class="stock-meta">
+      <span class="meta-tag meta-date">异动 2025-05-09</span>
+      <span class="meta-tag meta-buy">买入 2025-07-11</span>
+    </div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="card-body">
+    <div class="phase">
+      <div class="phase-title">年度最强妖股之一：一个月从13涨到44</div>
+      <p>这只票的走势堪称2025年妖股教科书。5月前半年在11~15元区间低位横盘，日均换手率仅1.61%，无人关注。5月下旬开始缓慢放量，6/3涨停+10%突破，此后便开始了<span class="up">疯狂的连板行情</span>：6/6涨停、6/9涨停、6/10涨停、6/11涨停——连续四个涨停板！换手率从6%飙升至29%（量比高达18x），股价从16.48直冲25.97。</p>
+    </div>
+    <div class="phase">
+      <div class="phase-title red">中继震荡（6/12~6/26）：高位巨量分歧</div>
+      <p>连板结束后并未直接结束行情。6/12~6/26在25~34区间巨量震荡，日换手率维持在10~20%。期间6/16再次涨停，6/20又一个涨停，但穿插着-6%、-3.5%的回调。<span class="warn">这种"涨停+暴跌"交替出现的走势让散户心态极度矛盾</span>：涨停时后悔卖早了，暴跌时后悔没卖。主力利用散户的贪婪与恐惧反复换手。</p>
+    </div>
+    <div class="phase">
+      <div class="phase-title green">第二波连板（6/27~7/2）：从33.78到44.65</div>
+      <p>6/27涨停、6/30涨+9.3%、7/1涨停、7/2涨停——又是四连阳！股价从30直冲44.65。此后7/4暴跌-7.8%开始高位调整。</p>
+    </div>
+    <div class="phase">
+      <div class="phase-title yellow">高位调整（7/4~7/11）：从44跌到37</div>
+      <p>7/4至7/10股价从44下跌至37.63（<span class="down">-15.7%</span>），成交量从17万手降至8~9万手。追涨资金被深度套牢，恐慌情绪蔓延。7/11出现<span class="highlight">企稳信号</span>——低开后拉起涨+1.5%至38.20，成交量维持9.5万手，说明抛压减弱。</p>
+    </div>
+    <div class="phase">
+      <div class="phase-title purple">买入后验证：第1周+17.7%，最高+79.6%</div>
+      <p>38.20买入后第1周即涨至49.47，第3周冲至62.76，最高68.62。但此后出现-16%的暴跌回调，说明<span class="warn">妖股的高收益伴随着高波动性</span>，止盈纪律极其重要。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== 15. 航天发展 异动1017 ===================== -->
+<div class="stock-card" id="s15">
+  <div class="card-header" onclick="this.parentElement.classList.toggle('open')">
+    <div>
+      <span class="stock-name">航天发展</span>
+      <span class="stock-code">000547</span>
+      <span class="result-tag profit">买入后最大+379.4%</span>
+    </div>
+    <div class="stock-meta">
+      <span class="meta-tag meta-date">异动 2025-10-17</span>
+      <span class="meta-tag meta-buy">买入 2025-11-12</span>
+    </div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="card-body">
+    <div class="phase">
+      <div class="phase-title">军工蓝筹的"蛰伏期"</div>
+      <p>2025年4~9月，航天发展在6.7~9.6元区间低位运行。虽然8月有过一波反弹至9.63，但很快回落至7.5附近。10月中旬股价徘徊在7.5~7.8，成交量萎缩至12~17万手（量比0.3~0.6x）。散户对军工板块的热情早已消退。</p>
+    </div>
+    <div class="phase">
+      <div class="phase-title green">涨停突破（10/28）：量比4.6x一举打开空间</div>
+      <p>10月28日，<span class="up">涨停+10%</span>至8.84，成交量暴增至161万手（量比4.6x）。次日维持在8.75高位，第三天小幅回落至8.60。10/31继续下滑至8.37，散户开始分化——快进快出者已经离场，坚定持有者则在等待方向。</p>
+    </div>
+    <div class="phase">
+      <div class="phase-title yellow">涨停后的缩量回踩（11/5~11/12）：经典的量价背离</div>
+      <p>11月5~12日，股价在8.47~8.81区间做窄幅震荡，成交量从82万逐步降至44万手。价格没有下跌但量在缩，这是<span class="highlight">典型的洗盘结束信号</span>——该卖的都卖了，剩下的筹码很稳定。</p>
+    </div>
+    <div class="phase">
+      <div class="phase-title purple">买入后验证：史诗级行情+379%</div>
+      <p>8.48买入后遭遇了绝对的超级行情——一度达到40.65元，涨幅<span class="up">+379.4%</span>。买入后第1周直接从8.48跳升至30+元区间（大概率是中间有停牌或重大利好），此后在30~40区间剧烈波动。这是极端案例，可能涉及重大事件驱动（重组、资产注入等），纯技术面无法完全解释。但从量价角度，买入前的缩量整理确实提供了最佳入场时机。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== 16. 航天发展 异动0731 ===================== -->
+<div class="stock-card" id="s16">
+  <div class="card-header" onclick="this.parentElement.classList.toggle('open')">
+    <div>
+      <span class="stock-name">航天发展</span>
+      <span class="stock-code">000547</span>
+      <span class="result-tag profit">买入后最大+379.4%</span>
+    </div>
+    <div class="stock-meta">
+      <span class="meta-tag meta-date">异动 2025-07-31</span>
+      <span class="meta-tag meta-buy">买入 2025-11-12</span>
+    </div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="card-body">
+    <div class="phase">
+      <div class="phase-title">三个半月的超长洗盘周期</div>
+      <p>从更长的视角看，7/31至11/12是一个长达三个半月的建仓洗盘周期。8月上旬有一波温和放量上涨（8.10→9.23），但8/14暴跌-5.3%打破上升趋势。9月连续下跌从9元打回7.5元区域（-17%），散户的信心被彻底摧毁。9月底至10月中旬，股价在7.5~7.8做了三周的地量横盘（量比0.5~0.7x），这是<span class="highlight">散户完全放弃该股</span>的信号。</p>
+      <p>10/28涨停是转折点，但主力并未急于拉升，而是又花了两周时间在8.3~9.0区间消化获利盘和解套盘。直到11/12确认洗盘完毕，才开始真正的主升浪。<span class="warn">耐心是最重要的品质</span>——在长达100多个交易日的等待中，99%的散户早已离场。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== 17. 瑞达期货 异动1013 ===================== -->
+<div class="stock-card" id="s17">
+  <div class="card-header" onclick="this.parentElement.classList.toggle('open')">
+    <div>
+      <span class="stock-name">瑞达期货</span>
+      <span class="stock-code">002961</span>
+      <span class="result-tag profit">买入后最大+41.4%</span>
+    </div>
+    <div class="stock-meta">
+      <span class="meta-tag meta-date">异动 2025-10-13</span>
+      <span class="meta-tag meta-buy">买入 2025-11-07</span>
+    </div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="card-body">
+    <div class="phase">
+      <div class="phase-title">从牛市退潮到再度蓄力</div>
+      <p>2025年6~8月瑞达期货有过一波从13涨到25的大行情（+92%），但8~10月又回落至20~21，吐回了部分涨幅。10月中旬股价在20.3~21.1区间缩量整理，量比降至0.2~0.4x。<span class="warn">前期获利盘基本清洗完毕，筹码重新沉淀。</span></p>
+    </div>
+    <div class="phase">
+      <div class="phase-title green">涨停突破（10/21）+三连阳确认（10/23~10/29）</div>
+      <p>10/21涨停+10%至22.48（量比1.4x），10/23大涨+6.3%至23.13（量比2.2x），10/28涨+5.7%至24.29，10/29继续涨至25.30。四天从20涨到25，涨幅+25%。散户开始注意到这只票。</p>
+    </div>
+    <div class="phase">
+      <div class="phase-title red">暴跌洗盘（10/30~11/7）：一天-7.4%</div>
+      <p>10/30突然暴跌<span class="down">-7.4%</span>至23.43，此后在22.6~23.6区间震荡八天，成交量从35万降至8.7万手。暴跌的那天换手率其实只有4.81%，说明<span class="highlight">并非主力出货而是刻意打压洗盘</span>。追涨散户被吓走后，成交量迅速萎缩，确认浮筹已出。</p>
+    </div>
+    <div class="phase">
+      <div class="phase-title purple">买入后验证：波动较大但最终+41.4%</div>
+      <p>22.83买入后走势并不平稳——第1周冲至28.85后暴跌回27，第4周更是暴跌至21.05（-17.6%）。但最终在第6周反弹至26.71，最高32.28。<span class="warn">瑞达期货的波动性要求极强的持仓纪律。</span></p>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== 18. 瑞达期货 异动0804 ===================== -->
+<div class="stock-card" id="s18">
+  <div class="card-header" onclick="this.parentElement.classList.toggle('open')">
+    <div>
+      <span class="stock-name">瑞达期货</span>
+      <span class="stock-code">002961</span>
+      <span class="result-tag profit">买入后最大+41.4%</span>
+    </div>
+    <div class="stock-meta">
+      <span class="meta-tag meta-date">异动 2025-08-04</span>
+      <span class="meta-tag meta-buy">买入 2025-11-07</span>
+    </div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="card-body">
+    <div class="phase">
+      <div class="phase-title">三个月的漫长等待：从21到20再到22</div>
+      <p>8~10月这三个月中，瑞达期货的走势像一条无聊的蛇——8月缓慢从21爬到23.7，9月又跌回20，10月初微弱反弹后在20~21横盘。量比长期在0.2~0.5x之间，几乎无人交易。<span class="highlight">这三个月是主力利用时间维度完成洗盘和建仓的过程</span>。真正的行情在10月下旬才开始，11/7买入后启动主升浪。这个超长的异动-买入区间说明：有些票需要极长的等待，主力的耐心远超散户想象。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== 19. 中国电建 ===================== -->
+<div class="stock-card" id="s19">
+  <div class="card-header" onclick="this.parentElement.classList.toggle('open')">
+    <div>
+      <span class="stock-name">中国电建</span>
+      <span class="stock-code">601669</span>
+      <span class="result-tag profit">买入后最大+22.2%</span>
+    </div>
+    <div class="stock-meta">
+      <span class="meta-tag meta-date">异动 2025-12-24</span>
+      <span class="meta-tag meta-buy">买入 2026-02-13</span>
+    </div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="card-body">
+    <div class="phase">
+      <div class="phase-title">央企蓝筹的低波动建仓</div>
+      <p>中国电建总市值超千亿，日换手率平均不到2%，是典型的央企大盘蓝筹。2025年7月有过一波从4.74到7.84的暴涨（+65%），但此后半年持续回调，12月底已跌至5.20附近。<span class="warn">大盘蓝筹的建仓周期极其漫长</span>，因为需要巨量资金、且不能引起市场注意。</p>
+    </div>
+    <div class="phase">
+      <div class="phase-title yellow">三周地量筑底（12/24~1/9）：量比仅0.2~0.3x</div>
+      <p>12月24日至1月9日，成交量持续萎缩至52~89万手（量比0.2~0.3x），换手率降至0.4~0.7%，是半年来最低水平。价格在5.18~5.38极窄区间波动。这是<span class="highlight">大资金最后阶段低位吸货</span>的典型特征——用极度冷清的行情让散户自然离场。</p>
+    </div>
+    <div class="phase">
+      <div class="phase-title green">放量突破（1/16~1/20）：两天+15%</div>
+      <p>1月16日成交量暴增至1065万手（量比4.1x），大涨<span class="up">+7.8%</span>至5.78。1月20日再涨<span class="up">+7.0%</span>至6.25。两天内股价拉升15%，成交量达到1124万手。此后回调至5.44附近，成交量逐步回落。</p>
+    </div>
+    <div class="phase">
+      <div class="phase-title red">三周回调消化（1/21~2/13）：回到原点附近</div>
+      <p>1月21日至2月13日，股价从6.25缓慢下跌至5.44，几乎回到了爆发前的水平。成交量从700万降至103万（量比0.4x）。追涨盘全部被洗出，散户结论："又是一日游行情，蓝筹股就是涨不动。"</p>
+    </div>
+    <div class="phase">
+      <div class="phase-title purple">买入后验证：温和上涨+22.2%</div>
+      <p>5.44买入后三周内温和上涨至6.65。大盘蓝筹的涨幅不如小盘股那么夸张，但稳定性更强，适合大资金配置。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== 20. 中国核建 ===================== -->
+<div class="stock-card" id="s20">
+  <div class="card-header" onclick="this.parentElement.classList.toggle('open')">
+    <div>
+      <span class="stock-name">中国核建</span>
+      <span class="stock-code">601611</span>
+      <span class="result-tag profit">买入后最大+77.1%</span>
+    </div>
+    <div class="stock-meta">
+      <span class="meta-tag meta-date">异动 2025-07-10</span>
+      <span class="meta-tag meta-buy">买入 2025-12-03</span>
+    </div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="card-body">
+    <div class="phase">
+      <div class="phase-title">近五个月的超级马拉松建仓</div>
+      <p>从7月10日异动开始到12月3日买入，整整近5个月！这是所有23个标的中<span class="highlight">异动-买入间隔最长的</span>，充分说明大盘央企的建仓周期可以远超想象。</p>
+    </div>
+    <div class="phase">
+      <div class="phase-title green">第一波试探（7/14~7/22）：温和放量上行</div>
+      <p>7月14日放量涨+4.6%（量比2.5x），7/21~7/22再次放量冲至9.78~9.98。但此后立刻回落至9.2~9.5。这只是主力的<span class="highlight">初次试盘</span>，测试筹码的流动性和上方抛压。</p>
+    </div>
+    <div class="phase">
+      <div class="phase-title yellow">两个月的"假死"行情（8~9月）</div>
+      <p>8月至9月下旬，股价在8.6~9.6极窄区间波动，日换手率降至0.4~0.7%，量比0.4~0.6x。整整两个月，股价基本不动。散户："这票跟死了一样，连看都懒得看。"<span class="warn">这恰恰是主力最喜欢的状态——极低成本、无人关注、持续吸筹。</span></p>
+    </div>
+    <div class="phase">
+      <div class="phase-title green">暴力拉升（10/9~10/24）：连续涨停到14.75</div>
+      <p>国庆后突然连续暴涨：10/9涨停+10.1%，10/10涨停+10%，10/15涨停+10.1%，配合10/23涨停+10%和10/24大涨+7%。半个月从8.84拉到14.75，涨幅67%！成交量从12万手暴增至365万手（量比11.3x）。</p>
+    </div>
+    <div class="phase">
+      <div class="phase-title red">暴跌+漫长回调（10/31~12/3）：从14.75跌回11.35</div>
+      <p>10月31日跌停<span class="down">-10%</span>，此后一路下跌。11月中旬从13跌到11，12月初进一步跌至11.35。整整一个月，跌幅23%。追涨资金损失惨重。成交量从246万降至27万，恐慌出清基本完成。<span class="highlight">12/3的11.35是恐慌出清后的低点</span>，也是最佳买入位。</p>
+    </div>
+    <div class="phase">
+      <div class="phase-title purple">买入后验证：+77.1%</div>
+      <p>11.35买入后最高达到20.10。第2周即大涨+29.7%，此后波动较大但总体向上。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== 21. 节能风电 ===================== -->
+<div class="stock-card" id="s21">
+  <div class="card-header" onclick="this.parentElement.classList.toggle('open')">
+    <div>
+      <span class="stock-name">节能风电</span>
+      <span class="stock-code">601016</span>
+      <span class="result-tag profit">买入后最大+46.2%</span>
+    </div>
+    <div class="stock-meta">
+      <span class="meta-tag meta-date">异动 2025-08-14</span>
+      <span class="meta-tag meta-buy">买入 2026-02-02</span>
+    </div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="card-body">
+    <div class="phase">
+      <div class="phase-title">最漫长的建仓周期：170个交易日</div>
+      <p>从8月14日到次年2月2日，异动-买入间隔长达近半年，堪称"等待的极限考验"。整个期间股价在2.95~3.34元区间波动，日均波幅仅0.5~1%，换手率0.6~1.5%。<span class="warn">如果说中国核建是马拉松，节能风电就是超级马拉松。</span></p>
+    </div>
+    <div class="phase">
+      <div class="phase-title yellow">反复试探、反复回落</div>
+      <p>9/8涨+4.7%是第一次试盘，但很快回落。9/17又涨+4.5%，再回落。9/26涨+3.2%冲至3.22，又跌回3.09。10月全月在3.09~3.25区间做无意义波动。11月更无聊，3.07~3.19。12月跌至2.95~3.01。1月中旬有两次放量尝试（1/14涨+4%、1/23涨+3.8%），但都无法持续突破。每次散户燃起一丝希望，都被随后的回调浇灭。</p>
+      <p>主力的策略是<span class="highlight">"试探→回落→试探→回落"</span>，在极长的时间维度中让散户彻底失去对这只票的关注和耐心。到2026年1~2月，恐怕已经没有任何散户还在关注这只每天涨跌一两分钱的票了。</p>
+    </div>
+    <div class="phase">
+      <div class="phase-title purple">买入后验证：第5周爆发+28.4%</div>
+      <p>3.03买入后前四周温和上涨，但第5周突然放量暴涨<span class="up">+28.4%</span>至4.43，成交量飙升至562万手。半年的沉寂，换来一周的爆发。这是大盘低价股的典型特征——建仓需要极长时间，但一旦启动势不可挡。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== 22. 华东数控 买入1017 ===================== -->
+<div class="stock-card" id="s22">
+  <div class="card-header" onclick="this.parentElement.classList.toggle('open')">
+    <div>
+      <span class="stock-name">华东数控</span>
+      <span class="stock-code">002248</span>
+      <span class="result-tag profit">买入后最大+40.4%</span>
+    </div>
+    <div class="stock-meta">
+      <span class="meta-tag meta-date">异动 2025-07-21</span>
+      <span class="meta-tag meta-buy">买入 2025-10-17</span>
+    </div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="card-body">
+    <div class="phase">
+      <div class="phase-title">高换手小盘股的剧烈博弈</div>
+      <p>华东数控日均换手率高达5.95%，是活跃的短线博弈型股票。7/24~8/8期间经历了戏剧性的走势：8/4涨停+10%，8/5暴跌（换手率33%！），8/6再涨停，8/7换手率43%。这种<span class="warn">极端的高换手说明筹码在多空之间剧烈转手</span>。</p>
+    </div>
+    <div class="phase">
+      <div class="phase-title red">从11.61跌回10.28的洗盘路径</div>
+      <p>8月中旬至9月下旬，股价从11.61逐步回落：先是8/12~8/14连续下跌从11.24跌到10.25，9/2又涨停后9/3~9/4暴跌回10.56，9/18~9/19再跌-4.4%和-4.9%。每次拉起来又打下去，形成<span class="highlight">"电锯式"的锯齿形态</span>。散户被反复割肉："这票就是上窜下跳，完全没规律，不做了。"</p>
+    </div>
+    <div class="phase">
+      <div class="phase-title yellow">10月平台整理：缩量企稳</div>
+      <p>10月上中旬股价在10.2~10.7区间整理，换手率降至3~6%（相对该股已属低位）。10/17成交量23万手且价格守住10.37，是缩量企稳的信号。</p>
+    </div>
+    <div class="phase">
+      <div class="phase-title purple">买入后验证：第2周+17%</div>
+      <p>10.37买入后第2周即大涨+17%至13.05，最高14.56（+40.4%）。但此后波动较大，第4周暴跌-13.9%。小盘高换手股的高收益必然伴随高波动。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== 23. 华东数控 买入0202 ===================== -->
+<div class="stock-card" id="s23">
+  <div class="card-header" onclick="this.parentElement.classList.toggle('open')">
+    <div>
+      <span class="stock-name">华东数控</span>
+      <span class="stock-code">002248</span>
+      <span class="result-tag profit">买入后最大+30.6%</span>
+    </div>
+    <div class="stock-meta">
+      <span class="meta-tag meta-date">异动 2025-11-25</span>
+      <span class="meta-tag meta-buy">买入 2026-02-02</span>
+    </div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="card-body">
+    <div class="phase">
+      <div class="phase-title">第二轮建仓周期：涨停后的缩量回踩</div>
+      <p>11月底至12月初，股价从11.35缓慢回升至12.22。12/3~12/5放量上涨后在11.8~12.3横盘。12月中旬突然暴跌：12/16跌<span class="down">-5.4%</span>至11.19，12/17继续跌至10.87。这是<span class="highlight">对前期高点（10月的14.56）获利盘的最后清洗</span>。</p>
+    </div>
+    <div class="phase">
+      <div class="phase-title yellow">箱体震荡（12/18~1/7）：缩量筑底</div>
+      <p>12月下旬至1月初，股价在10.8~11.7区间做缩量整理，换手率降至2.6~5.3%。1月8日突然涨停<span class="up">+10%</span>至12.97，1月13日再涨+3.7%至13.30。但此后又开始回调。</p>
+    </div>
+    <div class="phase">
+      <div class="phase-title red">回调洗盘（1/14~2/2）：从13.30跌至11.93</div>
+      <p>涨停后三周持续回调，换手率维持在5~8%，说明仍有抛压。到1/28~1/30连续三天下跌至11.82后企稳，2/2收11.93。<span class="highlight">涨停后三周的回调刚好把追涨盘洗出</span>。</p>
+    </div>
+    <div class="phase">
+      <div class="phase-title purple">买入后验证：稳步上行+30.6%</div>
+      <p>11.93买入后最高达到15.58。第2~3周是主要上涨段，分别+13.3%和+5.1%。相比第一个买入点，这次涨幅较小但胜在稳定性更好。</p>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script>
+// 默认只展开第一个，其余折叠
+document.querySelectorAll('.stock-card').forEach((card, i) => {
+  if (i > 0) card.classList.remove('open');
+});
+</script>
+</body>
+</html>
