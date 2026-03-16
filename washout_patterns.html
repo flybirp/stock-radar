@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>主力洗盘模式分类 | Stock Radar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0d1117;
+            --bg-secondary: #161b22;
+            --bg-tertiary: #21262d;
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
+            --text-muted: #656d76;
+            --border-color: #30363d;
+            --accent-red: #f85149;
+            --accent-orange: #db6d28;
+            --accent-yellow: #d29922;
+            --accent-green: #3fb950;
+            --accent-blue: #58a6ff;
+            --accent-purple: #a371f7;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', Helvetica, Arial, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 3rem 0;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 3rem;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Summary Cards */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .summary-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .summary-card .number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+        }
+
+        .summary-card .label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Pattern Cards */
+        .pattern-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .pattern-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+        }
+
+        .pattern-header {
+            padding: 1.5rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            cursor: pointer;
+        }
+
+        .pattern-header.pattern-a { border-left: 4px solid var(--accent-red); }
+        .pattern-header.pattern-b { border-left: 4px solid var(--accent-orange); }
+        .pattern-header.pattern-c { border-left: 4px solid var(--accent-blue); }
+        .pattern-header.pattern-d { border-left: 4px solid var(--accent-purple); }
+        .pattern-header.pattern-e { border-left: 4px solid var(--accent-green); }
+
+        .pattern-icon {
+            font-size: 2rem;
+        }
+
+        .pattern-title-section {
+            flex: 1;
+        }
+
+        .pattern-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .pattern-subtitle {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .pattern-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .tag.duration { background: rgba(88, 166, 255, 0.15); color: var(--accent-blue); }
+        .tag.depth { background: rgba(248, 81, 73, 0.15); color: var(--accent-red); }
+        .tag.cap { background: rgba(163, 113, 247, 0.15); color: var(--accent-purple); }
+
+        .pattern-content {
+            padding: 0 2rem 2rem;
+            display: block;
+        }
+
+        .pattern-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .pattern-section h4 {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 0.75rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+        }
+
+        .feature-item::before {
+            content: "•";
+            color: var(--accent-blue);
+            font-weight: bold;
+        }
+
+        /* Cases */
+        .cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+
+        .case-card {
+            background: var(--bg-tertiary);
+            border-radius: 8px;
+            padding: 1rem;
+        }
+
+        .case-name {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .case-desc {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .case-highlight {
+            color: var(--accent-yellow);
+        }
+
+        /* Stats Table */
+        .stats-section {
+            margin-top: 3rem;
+            padding-top: 3rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .stats-section h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 1.5rem;
+        }
+
+        .stats-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2rem;
+        }
+
+        .stats-table th,
+        .stats-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .stats-table th {
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+        }
+
+        .stats-table tr:hover {
+            background: var(--bg-secondary);
+        }
+
+        .stats-table .pattern-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .dot.red { background: var(--accent-red); }
+        .dot.orange { background: var(--accent-orange); }
+        .dot.blue { background: var(--accent-blue); }
+        .dot.purple { background: var(--accent-purple); }
+        .dot.green { background: var(--accent-green); }
+
+        /* Key Insights */
+        .insights-section {
+            margin-top: 3rem;
+        }
+
+        .insights-section h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 1.5rem;
+        }
+
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .insight-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .insight-card h3 {
+            font-size: 1rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .insight-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .footer a {
+            color: var(--accent-blue);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .pattern-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .pattern-tags {
+                margin-top: 0.5rem;
+            }
+
+            .stats-table {
+                font-size: 0.85rem;
+            }
+
+            .stats-table th,
+            .stats-table td {
+                padding: 0.75rem 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>🎯 主力洗盘模式分类</h1>
+            <p class="subtitle">
+                基于 23 个实战案例的建仓-洗盘节奏分析，识别五种典型的主力操盘模式，
+                帮助理解不同场景下的洗盘手法与最佳介入时机。
+            </p>
+        </header>
+
+        <!-- Summary -->
+        <div class="summary-grid">
+            <div class="summary-card">
+                <div class="number">5</div>
+                <div class="label">洗盘模式分类</div>
+            </div>
+            <div class="summary-card">
+                <div class="number">23</div>
+                <div class="label">实战案例分析</div>
+            </div>
+            <div class="summary-card">
+                <div class="number">1-5</div>
+                <div class="label">洗盘周期（周/月）</div>
+            </div>
+            <div class="summary-card">
+                <div class="number">量能</div>
+                <div class="label">核心观察指标</div>
+            </div>
+        </div>
+
+        <!-- Pattern A -->
+        <div class="pattern-card">
+            <div class="pattern-header pattern-a">
+                <span class="pattern-icon">🔥</span>
+                <div class="pattern-title-section">
+                    <div class="pattern-title">模式A：暴力拉升 → 暴跌洗盘 → 地量企稳</div>
+                    <div class="pattern-subtitle">经典款 — 涨停连板后的恐慌出清</div>
+                </div>
+                <div class="pattern-tags">
+                    <span class="tag duration">2-4周</span>
+                    <span class="tag depth">-15~-25%</span>
+                    <span class="tag cap">中小盘</span>
+                </div>
+            </div>
+            <div class="pattern-content">
+                <div class="pattern-section">
+                    <h4>核心特征</h4>
+                    <div class="feature-list">
+                        <div class="feature-item">涨停/连板快速拉升，制造赚钱效应</div>
+                        <div class="feature-item">暴跌 -10% ~ -20% 制造恐慌</div>
+                        <div class="feature-item">缩量横盘等待启动</div>
+                        <div class="feature-item">量能特征：巨量→地量（落差极大）</div>
+                    </div>
+                </div>
+                <div class="pattern-section">
+                    <h4>典型案例</h4>
+                    <div class="cases-grid">
+                        <div class="case-card">
+                            <div class="case-name">宁波韵升 (0626买入)</div>
+                            <div class="case-desc">6/11-12连板 → 6/18-19 <span class="case-highlight">暴跌-18%</span> → 9.5企稳后启动</div>
+                        </div>
+                        <div class="case-card">
+                            <div class="case-name">澄天伟业</div>
+                            <div class="case-desc">6/11-13 <span class="case-highlight">暴涨+37%</span> → 6/16-19暴跌-24% → 一个月阴跌到40</div>
+                        </div>
+                        <div class="case-card">
+                            <div class="case-name">野马电池</div>
+                            <div class="case-desc">6/25-30连板+37% → 7月整月横盘从23跌回19.66</div>
+                        </div>
+                        <div class="case-card">
+                            <div class="case-name">新瀚新材</div>
+                            <div class="case-desc">20cm涨停 <span class="case-highlight">暴涨暴跌</span> → 地量企稳后再爆发</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pattern B -->
+        <div class="pattern-card">
+            <div class="pattern-header pattern-b">
+                <span class="pattern-icon">🐌</span>
+                <div class="pattern-title-section">
+                    <div class="pattern-title">模式B：温水煮青蛙 → 阶梯阴跌 → 量能衰竭</div>
+                    <div class="pattern-subtitle">磨人款 — 用时间消磨耐心</div>
+                </div>
+                <div class="pattern-tags">
+                    <span class="tag duration">3-5周</span>
+                    <span class="tag depth">-10~-15%</span>
+                    <span class="tag cap">中盘</span>
+                </div>
+            </div>
+            <div class="pattern-content">
+                <div class="pattern-section">
+                    <h4>核心特征</h4>
+                    <div class="feature-list">
+                        <div class="feature-item">不是暴跌而是每天跌一点点</div>
+                        <div class="feature-item">用时间消磨散户耐心</div>
+                        <div class="feature-item">成交量逐步萎缩</div>
+                        <div class="feature-item">量能特征：持续萎缩、递减式</div>
+                    </div>
+                </div>
+                <div class="pattern-section">
+                    <h4>典型案例</h4>
+                    <div class="cases-grid">
+                        <div class="case-card">
+                            <div class="case-name">微芯生物</div>
+                            <div class="case-desc">快速拉升到24后，6/10-20 <span class="case-highlight">连续11天阶梯阴跌</span>，从24跌到21</div>
+                        </div>
+                        <div class="case-card">
+                            <div class="case-name">方正科技 (0723)</div>
+                            <div class="case-desc">涨停后在5.29-5.78 <span class="case-highlight">箱体震荡三周</span>，每天涨跌1-2%</div>
+                        </div>
+                        <div class="case-card">
+                            <div class="case-name">国轩高科 (0801)</div>
+                            <div class="case-desc">6/26-8/1在28-34区间磨了五周，量能从 <span class="case-highlight">255万降到38万</span></div>
+                        </div>
+                        <div class="case-card">
+                            <div class="case-name">瑞达期货</div>
+                            <div class="case-desc">涨停后暴跌-7.4%，然后8天窄幅震荡，量从35万降到8.7万</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pattern C -->
+        <div class="pattern-card">
+            <div class="pattern-header pattern-c">
+                <span class="pattern-icon">🏔️</span>
+                <div class="pattern-title-section">
+                    <div class="pattern-title">模式C：超长横盘蓄力 → 试探突破 → 回踩确认</div>
+                    <div class="pattern-subtitle">大盘蓝筹款 — 数月磨底等待时机</div>
+                </div>
+                <div class="pattern-tags">
+                    <span class="tag duration">2-5月</span>
+                    <span class="tag depth">窄幅震荡</span>
+                    <span class="tag cap">大盘蓝筹</span>
+                </div>
+            </div>
+            <div class="pattern-content">
+                <div class="pattern-section">
+                    <h4>核心特征</h4>
+                    <div class="feature-list">
+                        <div class="feature-item">几个月甚至半年的低位横盘</div>
+                        <div class="feature-item">期间有试探性拉升但都回落</div>
+                        <div class="feature-item">量能枯竭到极致</div>
+                        <div class="feature-item">量能特征：地量、极端低换手率（<1%）</div>
+                    </div>
+                </div>
+                <div class="pattern-section">
+                    <h4>典型案例</h4>
+                    <div class="cases-grid">
+                        <div class="case-card">
+                            <div class="case-name">中国核建</div>
+                            <div class="case-desc">7/10-12/3 <span class="case-highlight">近5个月！</span> 中间有10月连板暴涨，然后暴跌洗盘一个月</div>
+                        </div>
+                        <div class="case-card">
+                            <div class="case-name">节能风电</div>
+                            <div class="case-desc">8/14-2/2 <span class="case-highlight">长达170个交易日</span>，价格几乎不动，量比0.2-0.5x</div>
+                        </div>
+                        <div class="case-card">
+                            <div class="case-name">中国电建</div>
+                            <div class="case-desc">12/24-2/13三周地量筑底，<span class="case-highlight">量比仅0.2-0.3x</span></div>
+                        </div>
+                        <div class="case-card">
+                            <div class="case-name">航天发展 (0731视角)</div>
+                            <div class="case-desc">7/31-11/12三个半月，9月跌-17%打回原点</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pattern D -->
+        <div class="pattern-card">
+            <div class="pattern-header pattern-d">
+                <span class="pattern-icon">⚡</span>
+                <div class="pattern-title-section">
+                    <div class="pattern-title">模式D：连板妖股 → 高位剧震 → 快速洗盘</div>
+                    <div class="pattern-subtitle">游资风格 — 涨停与暴跌交替的电锯行情</div>
+                </div>
+                <div class="pattern-tags">
+                    <span class="tag duration">1-3周</span>
+                    <span class="tag depth">-15~-20%</span>
+                    <span class="tag cap">小盘游资</span>
+                </div>
+            </div>
+            <div class="pattern-content">
+                <div class="pattern-section">
+                    <h4>核心特征</h4>
+                    <div class="feature-list">
+                        <div class="feature-item">连续涨停后不是单边下跌</div>
+                        <div class="feature-item">"涨停+暴跌"交替出现</div>
+                        <div class="feature-item">高换手剧烈博弈</div>
+                        <div class="feature-item">量能特征：始终高换手（10-30%），但最后有缩量点</div>
+                    </div>
+                </div>
+                <div class="pattern-section">
+                    <h4>典型案例</h4>
+                    <div class="cases-grid">
+                        <div class="case-card">
+                            <div class="case-name">昂利康</div>
+                            <div class="case-desc">6/6-11四连板 → 高位 <span class="case-highlight">涨停+暴跌交替</span> → 7/4-11从44跌到37</div>
+                        </div>
+                        <div class="case-card">
+                            <div class="case-name">华东数控</div>
+                            <div class="case-desc">8/4涨停→8/5暴跌(换手33%)→8/6涨停→8/7换手43%，<span class="case-highlight">"电锯式"震荡</span></div>
+                        </div>
+                        <div class="case-card">
+                            <div class="case-name">新瀚新材 (长周期)</div>
+                            <div class="case-desc">反复20cm涨停+暴跌，<span class="case-highlight">三个半月高换手</span>完成筹码转移</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pattern E -->
+        <div class="pattern-card">
+            <div class="pattern-header pattern-e">
+                <span class="pattern-icon">🎯</span>
+                <div class="pattern-title-section">
+                    <div class="pattern-title">模式E：涨停突破 → 缩量回踩 → 二次启动</div>
+                    <div class="pattern-subtitle">最标准款 — 教科书般的回踩确认</div>
+                </div>
+                <div class="pattern-tags">
+                    <span class="tag duration">2-3周</span>
+                    <span class="tag depth">-8~-15%</span>
+                    <span class="tag cap">通用</span>
+                </div>
+            </div>
+            <div class="pattern-content">
+                <div class="pattern-section">
+                    <h4>核心特征</h4>
+                    <div class="feature-list">
+                        <div class="feature-item">涨停打开空间后不暴跌</div>
+                        <div class="feature-item">温和回调到涨停前附近</div>
+                        <div class="feature-item">量能快速萎缩</div>
+                        <div class="feature-item">量能特征：从涨停巨量快速收敛到地量</div>
+                    </div>
+                </div>
+                <div class="pattern-section">
+                    <h4>典型案例</h4>
+                    <div class="cases-grid">
+                        <div class="case-card">
+                            <div class="case-name">方正科技 (0623)</div>
+                            <div class="case-desc">6/5涨停后，<span class="case-highlight">三周消化</span>至4.57-4.75，量比0.5x</div>
+                        </div>
+                        <div class="case-card">
+                            <div class="case-name">光电股份 (0610)</div>
+                            <div class="case-desc">涨停后四天暴跌-13%，然后 <span class="case-highlight">一个月磨到13.19</span></div>
+                        </div>
+                        <div class="case-card">
+                            <div class="case-name">航天发展 (1017)</div>
+                            <div class="case-desc">10/28涨停后，两周 <span class="case-highlight">缩量回踩</span> 8.47-8.81</div>
+                        </div>
+                        <div class="case-card">
+                            <div class="case-name">国轩高科 (0603)</div>
+                            <div class="case-desc">涨停后两周 <span class="case-highlight">回调8%</span> 至24.41企稳</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Comparison Table -->
+        <section class="stats-section">
+            <h2>📊 五种模式对比</h2>
+            <table class="stats-table">
+                <thead>
+                    <tr>
+                        <th>模式</th>
+                        <th>拉升风格</th>
+                        <th>洗盘手法</th>
+                        <th>时长</th>
+                        <th>幅度</th>
+                        <th>适用市值</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <span class="pattern-label">
+                                <span class="dot red"></span>
+                                A 暴力洗盘
+                            </span>
+                        </td>
+                        <td>连板暴涨</td>
+                        <td>暴跌恐慌</td>
+                        <td>2-4周</td>
+                        <td>-15~-25%</td>
+                        <td>中小盘</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="pattern-label">
+                                <span class="dot orange"></span>
+                                B 温水煮蛙
+                            </span>
+                        </td>
+                        <td>脉冲拉升</td>
+                        <td>阶梯阴跌</td>
+                        <td>3-5周</td>
+                        <td>-10~-15%</td>
+                        <td>中盘</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="pattern-label">
+                                <span class="dot blue"></span>
+                                C 超长蓄力
+                            </span>
+                        </td>
+                        <td>试探突破</td>
+                        <td>长期横盘</td>
+                        <td>2-5月</td>
+                        <td>窄幅震荡</td>
+                        <td>大盘蓝筹</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="pattern-label">
+                                <span class="dot purple"></span>
+                                D 妖股剧震
+                            </span>
+                        </td>
+                        <td>连板</td>
+                        <td>涨跌交替</td>
+                        <td>1-3周</td>
+                        <td>-15~-20%</td>
+                        <td>小盘游资</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="pattern-label">
+                                <span class="dot green"></span>
+                                E 标准回踩
+                            </span>
+                        </td>
+                        <td>单涨停</td>
+                        <td>温和回调</td>
+                        <td>2-3周</td>
+                        <td>-8~-15%</td>
+                        <td>通用</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Key Insights -->
+        <section class="insights-section">
+            <h2>💡 核心规律</h2>
+            <div class="insights-grid">
+                <div class="insight-card">
+                    <h3>📏 市值与周期</h3>
+                    <p>市值越大，洗盘周期越长。小盘股2-4周，大盘蓝筹可达数月。资金体量决定了完成筹码转移所需的时间。</p>
+                </div>
+                <div class="insight-card">
+                    <h3>⚡ 拉升与洗盘</h3>
+                    <p>拉升越猛烈，洗盘越凶狠。连板后往往是暴跌洗盘，目的是快速清洗跟风盘，为后续拉升减轻压力。</p>
+                </div>
+                <div class="insight-card">
+                    <h3>📉 量能信号</h3>
+                    <p>无论哪种模式，买点都在"量能衰竭到极致"的位置。地量是洗盘完成的最可靠信号。</p>
+                </div>
+                <div class="insight-card">
+                    <h3>🔗 模式叠加</h3>
+                    <p>模式可叠加：一只票可能先A后B（暴跌后阴跌），或C中嵌套E（长期横盘中有涨停回踩）。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>
+                基于 23 个 A 股实战案例分析 | 
+                <a href="./stock_analysis_report.html">查看完整案例报告</a> | 
+                <a href="https://github.com/flybirp/stock-radar">GitHub</a>
+            </p>
+            <p style="margin-top: 0.5rem;">
+                Stock Radar Project © 2026
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
