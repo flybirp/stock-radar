@@ -1,18 +1,24 @@
 {
-  "generated_at": "2026-03-24 10:38:16",
+  "generated_at": "2026-03-25 10:36:09",
   "csv_source": "20260119-ret.csv",
   "total_stocks": 30,
   "stocks": [
     {
       "code": "301209",
       "name": "联合化学",
-      "price": "89.2",
-      "change_pct": "4.94%",
+      "price": "88.92",
+      "change_pct": "-0.31%",
       "target_date": "20260119",
       "min_distance": 64.3126,
       "min_distance_name": "瑞达期货-20251020-20251107",
       "matching_period": "['20251226']-['20260119']",
       "news": [
+        {
+          "title": "联合化学：公司投资参股公司米莱芯程业务正在稳步进行中",
+          "date": "03-25 05:26",
+          "source": "联合化学资讯",
+          "url": "https://guba.eastmoney.com/news,301209,1684741786.html"
+        },
         {
           "title": "联合化学：目前公司各项经营活动正常进行",
           "date": "03-13 07:11",
@@ -54,20 +60,14 @@
           "date": "02-12 09:20",
           "source": "联合化学资讯",
           "url": "https://guba.eastmoney.com/news,301209,1668688614.html"
-        },
-        {
-          "title": "联合化学：截至2026年1月30日收盘后，公司股份持有人数为5708户",
-          "date": "02-05 08:35",
-          "source": "联合化学资讯",
-          "url": "https://guba.eastmoney.com/news,301209,1666081981.html"
         }
       ]
     },
     {
       "code": "688081",
       "name": "兴图新科",
-      "price": "36.29",
-      "change_pct": "0.69%",
+      "price": "37.7",
+      "change_pct": "3.89%",
       "target_date": "20260119",
       "min_distance": 64.9895,
       "min_distance_name": "瑞达期货-20251020-20251107",
@@ -126,8 +126,8 @@
     {
       "code": "600895",
       "name": "张江高科",
-      "price": "34.68",
-      "change_pct": "1.76%",
+      "price": "35.41",
+      "change_pct": "2.1%",
       "target_date": "20260119",
       "min_distance": 65.8379,
       "min_distance_name": "瑞达期货-20251020-20251107",
@@ -186,8 +186,8 @@
     {
       "code": "300572",
       "name": "安车检测",
-      "price": "26.23",
-      "change_pct": "10.21%",
+      "price": "27.15",
+      "change_pct": "3.51%",
       "target_date": "20260119",
       "min_distance": 66.287,
       "min_distance_name": "瑞达期货-20251020-20251107",
@@ -246,8 +246,8 @@
     {
       "code": "000948",
       "name": "南天信息",
-      "price": "15.27",
-      "change_pct": "3.46%",
+      "price": "15.43",
+      "change_pct": "1.05%",
       "target_date": "20260119",
       "min_distance": 66.409,
       "min_distance_name": "瑞达期货-20251020-20251107",
@@ -306,68 +306,68 @@
     {
       "code": "600028",
       "name": "中国石化",
-      "price": "5.94",
-      "change_pct": "-1.66%",
+      "price": "5.92",
+      "change_pct": "-0.34%",
       "target_date": "20260119",
       "min_distance": 66.4614,
       "min_distance_name": "瑞达期货-20251020-20251107",
       "matching_period": "['20251226']-['20260119']",
       "news": [
         {
-          "title": "同程旅行与中国石化易捷加油达成合作 共同探索“能源+文旅”服务新生态",
-          "date": "03-24 03:28",
+          "title": "涉嫌碰瓷中国石化，中园石化涉事加油站被立案调查",
+          "date": "03-25 12:25",
           "source": "中国石化资讯",
-          "url": "https://guba.eastmoney.com/news,600028,1684102677.html"
+          "url": "https://guba.eastmoney.com/news,600028,1684587610.html"
         },
         {
-          "title": "223家公司公布派现方案 合计派现1689.12亿元",
-          "date": "03-24 09:15",
+          "title": "加完油才发现是“中园石化”！涉事加油站已被立案调查",
+          "date": "03-25 09:59",
           "source": "中国石化资讯",
-          "url": "https://guba.eastmoney.com/news,600028,1683660421.html"
+          "url": "https://guba.eastmoney.com/news,600028,1684421546.html"
         },
         {
-          "title": "富祥药业、北方华创目标价涨幅超60% 46股获推荐丨券商评级观察",
-          "date": "03-24 09:02",
+          "title": "256家公司公布派现方案 合计派现2345.97亿元",
+          "date": "03-25 09:31",
           "source": "中国石化资讯",
-          "url": "https://guba.eastmoney.com/news,600028,1683638904.html"
+          "url": "https://guba.eastmoney.com/news,600028,1684337137.html"
         },
         {
-          "title": "富祥药业目标价涨幅超83%；46股获推荐丨券商评级观察",
-          "date": "03-24 08:58",
+          "title": "海南省委书记冯飞、省长刘小明会见中国石化集团董事长侯启军一行",
+          "date": "03-25 08:52",
           "source": "中国石化资讯",
-          "url": "https://guba.eastmoney.com/news,600028,1683638097.html"
+          "url": "https://guba.eastmoney.com/news,600028,1684254733.html"
         },
         {
-          "title": "大手笔！4家公司，分红均超百亿元",
-          "date": "03-24 07:58",
+          "title": "超200家公司发布年报分红方案 5家龙头公司分红超百亿元",
+          "date": "03-25 07:05",
           "source": "中国石化资讯",
-          "url": "https://guba.eastmoney.com/news,600028,1683630369.html"
+          "url": "https://guba.eastmoney.com/news,600028,1684234542.html"
         },
         {
-          "title": "近200份现金分红方案在路上 震荡市高股息资产配置价值升温",
-          "date": "03-24 07:21",
+          "title": "探索“制储输用”一体发展——氢能综合应用试点启动",
+          "date": "03-25 06:33",
           "source": "中国石化资讯",
-          "url": "https://guba.eastmoney.com/news,600028,1683616765.html"
+          "url": "https://guba.eastmoney.com/news,600028,1684232176.html"
         },
         {
-          "title": "大手笔！4家公司，分红超百亿元",
-          "date": "03-24 03:11",
+          "title": "超200家公司发布年报分红方案 行业龙头慷慨派现",
+          "date": "03-25 12:00",
           "source": "中国石化资讯",
-          "url": "https://guba.eastmoney.com/news,600028,1683604356.html"
+          "url": "https://guba.eastmoney.com/news,600028,1684219422.html"
         },
         {
-          "title": "“开了两个加油站都没油了！”今晚油价上调 国家临时调控稳油市",
-          "date": "03-24 12:16",
+          "title": "226家上市公司已披露2025年度分红方案 拟合计派现超1790亿元",
+          "date": "03-24 11:59",
           "source": "中国石化资讯",
-          "url": "https://guba.eastmoney.com/news,600028,1683595365.html"
+          "url": "https://guba.eastmoney.com/news,600028,1684216675.html"
         }
       ]
     },
     {
       "code": "002072",
       "name": "凯瑞德",
-      "price": "7.09",
-      "change_pct": "4.88%",
+      "price": "7.21",
+      "change_pct": "1.69%",
       "target_date": "20260119",
       "min_distance": 67.9029,
       "min_distance_name": "瑞达期货-20251020-20251107",
@@ -426,8 +426,8 @@
     {
       "code": "601519",
       "name": "大智慧",
-      "price": "10.68",
-      "change_pct": "2.99%",
+      "price": "10.82",
+      "change_pct": "1.31%",
       "target_date": "20260119",
       "min_distance": 69.582,
       "min_distance_name": "航天发展-20251017-20251112",
@@ -486,8 +486,8 @@
     {
       "code": "603236",
       "name": "移远通信",
-      "price": "73.48",
-      "change_pct": "0.77%",
+      "price": "75.0",
+      "change_pct": "2.07%",
       "target_date": "20260119",
       "min_distance": 70.6473,
       "min_distance_name": "瑞达期货-20251020-20251107",
@@ -546,8 +546,8 @@
     {
       "code": "603843",
       "name": "*ST正平",
-      "price": "8.95",
-      "change_pct": "5.05%",
+      "price": "8.84",
+      "change_pct": "-1.23%",
       "target_date": "20260119",
       "min_distance": 70.8896,
       "min_distance_name": "中信证券-20240708-20240730",
@@ -606,8 +606,8 @@
     {
       "code": "300652",
       "name": "雷迪克",
-      "price": "40.67",
-      "change_pct": "1.32%",
+      "price": "41.77",
+      "change_pct": "2.7%",
       "target_date": "20260119",
       "min_distance": 70.9504,
       "min_distance_name": "华纳药厂-20250409-20250512",
@@ -666,8 +666,8 @@
     {
       "code": "002600",
       "name": "领益智造",
-      "price": "12.88",
-      "change_pct": "1.82%",
+      "price": "13.26",
+      "change_pct": "2.95%",
       "target_date": "20260119",
       "min_distance": 71.2806,
       "min_distance_name": "瑞达期货-20251020-20251107",
@@ -726,8 +726,8 @@
     {
       "code": "301383",
       "name": "天键股份",
-      "price": "27.4",
-      "change_pct": "3.55%",
+      "price": "27.67",
+      "change_pct": "0.99%",
       "target_date": "20260119",
       "min_distance": 72.0195,
       "min_distance_name": "瑞达期货-20251020-20251107",
@@ -786,8 +786,8 @@
     {
       "code": "603507",
       "name": "振江股份",
-      "price": "38.09",
-      "change_pct": "0.87%",
+      "price": "38.68",
+      "change_pct": "1.55%",
       "target_date": "20260119",
       "min_distance": 72.3949,
       "min_distance_name": "航天发展-20251017-20251112",
@@ -846,8 +846,8 @@
     {
       "code": "688010",
       "name": "福光股份",
-      "price": "27.93",
-      "change_pct": "5.32%",
+      "price": "29.16",
+      "change_pct": "4.4%",
       "target_date": "20260119",
       "min_distance": 72.6728,
       "min_distance_name": "瑞达期货-20251020-20251107",
@@ -906,8 +906,8 @@
     {
       "code": "600568",
       "name": "ST中珠",
-      "price": "2.78",
-      "change_pct": "2.58%",
+      "price": "2.84",
+      "change_pct": "2.16%",
       "target_date": "20260119",
       "min_distance": 72.7113,
       "min_distance_name": "中信证券-20240708-20240730",
@@ -966,8 +966,8 @@
     {
       "code": "301070",
       "name": "开勒股份",
-      "price": "67.08",
-      "change_pct": "4.24%",
+      "price": "69.87",
+      "change_pct": "4.16%",
       "target_date": "20260119",
       "min_distance": 72.7452,
       "min_distance_name": "瑞达期货-20251020-20251107",
@@ -1026,8 +1026,8 @@
     {
       "code": "688297",
       "name": "中无人机",
-      "price": "50.93",
-      "change_pct": "3.66%",
+      "price": "52.93",
+      "change_pct": "3.93%",
       "target_date": "20260119",
       "min_distance": 73.0139,
       "min_distance_name": "瑞达期货-20251020-20251107",
@@ -1086,8 +1086,8 @@
     {
       "code": "002501",
       "name": "利源股份",
-      "price": "1.84",
-      "change_pct": "6.36%",
+      "price": "1.87",
+      "change_pct": "1.63%",
       "target_date": "20260119",
       "min_distance": 73.2047,
       "min_distance_name": "瑞达期货-20251020-20251107",
@@ -1146,8 +1146,8 @@
     {
       "code": "002678",
       "name": "珠江钢琴",
-      "price": "5.06",
-      "change_pct": "4.76%",
+      "price": "5.18",
+      "change_pct": "2.37%",
       "target_date": "20260119",
       "min_distance": 73.303,
       "min_distance_name": "华纳药厂-20250409-20250512",
@@ -1206,13 +1206,19 @@
     {
       "code": "600184",
       "name": "光电股份",
-      "price": "15.86",
-      "change_pct": "9.99%",
+      "price": "16.9",
+      "change_pct": "6.56%",
       "target_date": "20260119",
       "min_distance": 73.3047,
       "min_distance_name": "瑞达期货-20251020-20251107",
       "matching_period": "['20251226']-['20260119']",
       "news": [
+        {
+          "title": "A股地面兵装板块单日暴涨7.86% 反弹能走多远？",
+          "date": "03-24 10:20",
+          "source": "光电股份资讯",
+          "url": "https://guba.eastmoney.com/news,600184,1684201448.html"
+        },
         {
           "title": "光电股份：公司目前无应披露未披露事项",
           "date": "02-24 07:09",
@@ -1254,20 +1260,14 @@
           "date": "02-13 05:34",
           "source": "光电股份资讯",
           "url": "https://guba.eastmoney.com/news,600184,1669733384.html"
-        },
-        {
-          "title": "光电股份：公司已于2026年1月27日披露了《2025年年度业绩预盈公告》",
-          "date": "02-13 05:34",
-          "source": "光电股份资讯",
-          "url": "https://guba.eastmoney.com/news,600184,1669733208.html"
         }
       ]
     },
     {
       "code": "002389",
-      "name": "航天彩虹",
-      "price": "21.7",
-      "change_pct": "3.58%",
+      "name": "002389",
+      "price": "",
+      "change_pct": "",
       "target_date": "20260119",
       "min_distance": 73.658,
       "min_distance_name": "瑞达期货-20251020-20251107",
@@ -1326,8 +1326,8 @@
     {
       "code": "002093",
       "name": "国脉科技",
-      "price": "9.46",
-      "change_pct": "2.49%",
+      "price": "9.64",
+      "change_pct": "1.9%",
       "target_date": "20260119",
       "min_distance": 73.9688,
       "min_distance_name": "中信证券-20240708-20240730",
@@ -1386,8 +1386,8 @@
     {
       "code": "601698",
       "name": "中国卫通",
-      "price": "31.56",
-      "change_pct": "0.86%",
+      "price": "31.96",
+      "change_pct": "1.27%",
       "target_date": "20260119",
       "min_distance": 74.0803,
       "min_distance_name": "微芯生物-20250527-20250620",
@@ -1446,8 +1446,8 @@
     {
       "code": "300965",
       "name": "恒宇信通",
-      "price": "51.31",
-      "change_pct": "5.49%",
+      "price": "52.24",
+      "change_pct": "1.81%",
       "target_date": "20260119",
       "min_distance": 74.1882,
       "min_distance_name": "瑞达期货-20251020-20251107",
@@ -1506,8 +1506,8 @@
     {
       "code": "002651",
       "name": "利君股份",
-      "price": "9.29",
-      "change_pct": "5.45%",
+      "price": "9.58",
+      "change_pct": "3.12%",
       "target_date": "20260119",
       "min_distance": 74.3033,
       "min_distance_name": "中信证券-20240708-20240730",
@@ -1566,8 +1566,8 @@
     {
       "code": "601512",
       "name": "中新集团",
-      "price": "8.69",
-      "change_pct": "4.2%",
+      "price": "8.68",
+      "change_pct": "-12%",
       "target_date": "20260119",
       "min_distance": 74.3312,
       "min_distance_name": "华纳药厂-20250409-20250512",
@@ -1626,8 +1626,8 @@
     {
       "code": "600682",
       "name": "南京新百",
-      "price": "6.36",
-      "change_pct": "3.41%",
+      "price": "6.42",
+      "change_pct": "0.94%",
       "target_date": "20260119",
       "min_distance": 74.3798,
       "min_distance_name": "瑞达期货-20251020-20251107",
@@ -1686,8 +1686,8 @@
     {
       "code": "600999",
       "name": "招商证券",
-      "price": "15.25",
-      "change_pct": "1.33%",
+      "price": "15.38",
+      "change_pct": "0.85%",
       "target_date": "20260119",
       "min_distance": 74.5648,
       "min_distance_name": "瑞达期货-20251020-20251107",
@@ -1746,8 +1746,8 @@
     {
       "code": "300198",
       "name": "ST纳川",
-      "price": "2.68",
-      "change_pct": "2.29%",
+      "price": "2.74",
+      "change_pct": "2.24%",
       "target_date": "20260119",
       "min_distance": 74.781,
       "min_distance_name": "瑞达期货-20251020-20251107",
