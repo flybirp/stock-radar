@@ -1,18 +1,24 @@
 {
-  "generated_at": "2026-05-12 11:44:54",
+  "generated_at": "2026-05-13 11:52:35",
   "csv_source": "20260119-ret.csv",
   "total_stocks": 30,
   "stocks": [
     {
       "code": "301209",
       "name": "联合化学",
-      "price": "86.82",
-      "change_pct": "-1.27%",
+      "price": "91.65",
+      "change_pct": "5.56%",
       "target_date": "20260119",
       "min_distance": 64.3126,
       "min_distance_name": "瑞达期货-20251020-20251107",
       "matching_period": "['20251226']-['20260119']",
       "news": [
+        {
+          "title": "联合化学：截至2026年5月8日收盘后公司股份持有人（合并普通账户和融资融券信用账户）数为7336户",
+          "date": "05-12 08:08",
+          "source": "联合化学资讯",
+          "url": "https://guba.eastmoney.com/news,301209,1706589426.html"
+        },
         {
           "title": "联合化学：截至2026年4月30日公司股东户数为7179户",
           "date": "05-07 05:13",
@@ -54,20 +60,14 @@
           "date": "04-28 08:27",
           "source": "联合化学资讯",
           "url": "https://guba.eastmoney.com/news,301209,1700225714.html"
-        },
-        {
-          "title": "联合化学：2025年净利润同比下降6.72% 拟10转4派2.1元",
-          "date": "04-27 09:23",
-          "source": "联合化学资讯",
-          "url": "https://guba.eastmoney.com/news,301209,1700139546.html"
         }
       ]
     },
     {
       "code": "688081",
-      "name": "688081",
-      "price": "",
-      "change_pct": "",
+      "name": "兴图新科",
+      "price": "58.44",
+      "change_pct": "4.81%",
       "target_date": "20260119",
       "min_distance": 64.9895,
       "min_distance_name": "瑞达期货-20251020-20251107",
@@ -126,13 +126,19 @@
     {
       "code": "600895",
       "name": "张江高科",
-      "price": "37.65",
-      "change_pct": "-2.08%",
+      "price": "37.15",
+      "change_pct": "-1.33%",
       "target_date": "20260119",
       "min_distance": 65.8379,
       "min_distance_name": "瑞达期货-20251020-20251107",
       "matching_period": "['20251226']-['20260119']",
       "news": [
+        {
+          "title": "9.45亿元资金今日流出房地产股",
+          "date": "05-13 04:53",
+          "source": "张江高科资讯",
+          "url": "https://guba.eastmoney.com/news,600895,1707326173.html"
+        },
         {
           "title": "房地产行业资金流入榜：万通发展等9股净流入资金超5000万元",
           "date": "04-30 05:11",
@@ -174,20 +180,14 @@
           "date": "04-25 10:20",
           "source": "张江高科资讯",
           "url": "https://guba.eastmoney.com/news,600895,1699258349.html"
-        },
-        {
-          "title": "张江高科：Q1归母净利润为8351万元，同比下降71.6%",
-          "date": "04-24 06:57",
-          "source": "张江高科资讯",
-          "url": "https://guba.eastmoney.com/news,600895,1699136008.html"
         }
       ]
     },
     {
       "code": "300572",
       "name": "安车检测",
-      "price": "35.2",
-      "change_pct": "1.44%",
+      "price": "35.07",
+      "change_pct": "-0.37%",
       "target_date": "20260119",
       "min_distance": 66.287,
       "min_distance_name": "瑞达期货-20251020-20251107",
@@ -246,13 +246,19 @@
     {
       "code": "000948",
       "name": "南天信息",
-      "price": "15.06",
-      "change_pct": "-1.83%",
+      "price": "15.28",
+      "change_pct": "1.46%",
       "target_date": "20260119",
       "min_distance": 66.409,
       "min_distance_name": "瑞达期货-20251020-20251107",
       "matching_period": "['20251226']-['20260119']",
       "news": [
+        {
+          "title": "南天信息：云南省工业投资控股集团有限责任公司质押2600.00万股用于偿还经营周转类债务或自身日常经营周转需求",
+          "date": "05-13 05:28",
+          "source": "南天信息资讯",
+          "url": "https://guba.eastmoney.com/news,000948,1707338255.html"
+        },
         {
           "title": "南天信息：将于2026年05月12日召开2025年年度股东大会",
           "date": "05-11 04:02",
@@ -294,25 +300,55 @@
           "date": "04-24 06:02",
           "source": "南天信息资讯",
           "url": "https://guba.eastmoney.com/news,000948,1699112118.html"
-        },
-        {
-          "title": "图解财报：南天信息一季度归母净利润-2382.18万元，上年同期-3007.79万元",
-          "date": "04-24 05:52",
-          "source": "南天信息资讯",
-          "url": "https://guba.eastmoney.com/news,000948,1699105842.html"
         }
       ]
     },
     {
       "code": "600028",
       "name": "中国石化",
-      "price": "5.2",
-      "change_pct": "-19%",
+      "price": "5.17",
+      "change_pct": "-0.58%",
       "target_date": "20260119",
       "min_distance": 66.4614,
       "min_distance_name": "瑞达期货-20251020-20251107",
       "matching_period": "['20251226']-['20260119']",
       "news": [
+        {
+          "title": "中国超深层千亿立方米级页岩气田诞生",
+          "date": "05-13 07:32",
+          "source": "中国石化资讯",
+          "url": "https://guba.eastmoney.com/news,600028,1707374447.html"
+        },
+        {
+          "title": "我国超深层千亿立方米级页岩气田诞生",
+          "date": "05-13 06:16",
+          "source": "中国石化资讯",
+          "url": "https://guba.eastmoney.com/news,600028,1707351481.html"
+        },
+        {
+          "title": "解密主力资金出逃股 连续5日净流出588股",
+          "date": "05-13 04:53",
+          "source": "中国石化资讯",
+          "url": "https://guba.eastmoney.com/news,600028,1707326174.html"
+        },
+        {
+          "title": "能源早报 | 亿纬锂能签署8GWh储能大电池订单；赣锋锂业副总裁拟减持不超4万股股份",
+          "date": "05-13 08:00",
+          "source": "中国石化资讯",
+          "url": "https://guba.eastmoney.com/news,600028,1706668433.html"
+        },
+        {
+          "title": "向新求变动能充沛 A股传统产业“老树发新芽”",
+          "date": "05-13 02:38",
+          "source": "中国石化资讯",
+          "url": "https://guba.eastmoney.com/news,600028,1706646778.html"
+        },
+        {
+          "title": "中国石化：关于高级管理人员离任的公告",
+          "date": "05-12 09:19",
+          "source": "中国石化资讯",
+          "url": "https://guba.eastmoney.com/news,600028,1706606345.html"
+        },
         {
           "title": "中国石化(600028.SH)：副总裁郭洪金因年龄原因辞职",
           "date": "05-12 06:38",
@@ -324,50 +360,14 @@
           "date": "05-12 06:28",
           "source": "中国石化资讯",
           "url": "https://guba.eastmoney.com/news,600028,1706561896.html"
-        },
-        {
-          "title": "中国石油化工股份：副总裁郭洪金辞任",
-          "date": "05-12 06:06",
-          "source": "中国石化资讯",
-          "url": "https://guba.eastmoney.com/news,600028,1706557587.html"
-        },
-        {
-          "title": "中国石化副总裁郭洪金因年龄原因请辞",
-          "date": "05-12 05:41",
-          "source": "中国石化资讯",
-          "url": "https://guba.eastmoney.com/news,600028,1706547099.html"
-        },
-        {
-          "title": "中国石化(600028.SH)：副总裁郭洪金辞职",
-          "date": "05-12 05:32",
-          "source": "中国石化资讯",
-          "url": "https://guba.eastmoney.com/news,600028,1706543086.html"
-        },
-        {
-          "title": "中国石化：副总裁郭洪金离任",
-          "date": "05-12 05:32",
-          "source": "中国石化资讯",
-          "url": "https://guba.eastmoney.com/news,600028,1706544872.html"
-        },
-        {
-          "title": "解密主力资金出逃股 连续5日净流出570股",
-          "date": "05-12 04:55",
-          "source": "中国石化资讯",
-          "url": "https://guba.eastmoney.com/news,600028,1706535077.html"
-        },
-        {
-          "title": "中国石化：将于2026年05月13日召开2025年年度股东大会",
-          "date": "05-12 04:00",
-          "source": "中国石化资讯",
-          "url": "https://guba.eastmoney.com/news,600028,1706513047.html"
         }
       ]
     },
     {
       "code": "002072",
       "name": "凯瑞德",
-      "price": "7.07",
-      "change_pct": "-0.56%",
+      "price": "7.09",
+      "change_pct": "28%",
       "target_date": "20260119",
       "min_distance": 67.9029,
       "min_distance_name": "瑞达期货-20251020-20251107",
@@ -426,13 +426,43 @@
     {
       "code": "601519",
       "name": "大智慧",
-      "price": "11.21",
-      "change_pct": "-1.41%",
+      "price": "11.12",
+      "change_pct": "-0.8%",
       "target_date": "20260119",
       "min_distance": 69.582,
       "min_distance_name": "航天发展-20251017-20251112",
       "matching_period": "['20251222']-['20260119']",
       "news": [
+        {
+          "title": "上交所重启“湘财+大智慧”审核，大智慧掌门人也有最新回应",
+          "date": "05-13 06:31",
+          "source": "大智慧资讯",
+          "url": "https://guba.eastmoney.com/news,601519,1707356798.html"
+        },
+        {
+          "title": "湘财股份更新吸收合并大智慧申请文件",
+          "date": "05-13 06:22",
+          "source": "大智慧资讯",
+          "url": "https://guba.eastmoney.com/news,601519,1707354369.html"
+        },
+        {
+          "title": "湘财股份：换股吸收合并大智慧的交易获上交所恢复审核",
+          "date": "05-13 06:21",
+          "source": "大智慧资讯",
+          "url": "https://guba.eastmoney.com/news,601519,1707354374.html"
+        },
+        {
+          "title": "湘财股份：上交所恢复审核公司换股吸收合并大智慧事项",
+          "date": "05-13 04:40",
+          "source": "大智慧资讯",
+          "url": "https://guba.eastmoney.com/news,601519,1707318981.html"
+        },
+        {
+          "title": "大智慧：已会同相关中介机构完成估值报告的数据更新",
+          "date": "05-12 10:01",
+          "source": "大智慧资讯",
+          "url": "https://guba.eastmoney.com/news,601519,1706615455.html"
+        },
         {
           "title": "湘财股份2026年Q1业绩承压，净利润腰斩，陷转型困局",
           "date": "05-06 05:32",
@@ -450,44 +480,14 @@
           "date": "04-24 03:20",
           "source": "大智慧资讯",
           "url": "https://guba.eastmoney.com/news,601519,1699050591.html"
-        },
-        {
-          "title": "大智慧拟于5月13日举行2025年度暨2026年第一季度业绩说明会",
-          "date": "04-24 01:10",
-          "source": "大智慧资讯",
-          "url": "https://guba.eastmoney.com/news,601519,1698910750.html"
-        },
-        {
-          "title": "大智慧一季度营收增长近1成",
-          "date": "04-24 01:10",
-          "source": "大智慧资讯",
-          "url": "https://guba.eastmoney.com/news,601519,1698872394.html"
-        },
-        {
-          "title": "大智慧：2026年一季度实现营业总收入1.81亿元 同比增长9.88%",
-          "date": "04-24 09:24",
-          "source": "大智慧资讯",
-          "url": "https://guba.eastmoney.com/news,601519,1698667601.html"
-        },
-        {
-          "title": "大智慧(601519.SH)：2026年一季报净利润为-2958.54万元，同比由盈转亏",
-          "date": "04-24 09:04",
-          "source": "大智慧资讯",
-          "url": "https://guba.eastmoney.com/news,601519,1698511632.html"
-        },
-        {
-          "title": "大智慧一季度营收增长9.88% 净利润同比由盈转亏",
-          "date": "04-23 09:08",
-          "source": "大智慧资讯",
-          "url": "https://guba.eastmoney.com/news,601519,1698405125.html"
         }
       ]
     },
     {
       "code": "603236",
       "name": "移远通信",
-      "price": "73.88",
-      "change_pct": "-1.7%",
+      "price": "75.77",
+      "change_pct": "2.56%",
       "target_date": "20260119",
       "min_distance": 70.6473,
       "min_distance_name": "瑞达期货-20251020-20251107",
@@ -546,13 +546,25 @@
     {
       "code": "603843",
       "name": "*ST正平",
-      "price": "9.61",
-      "change_pct": "2.45%",
+      "price": "9.13",
+      "change_pct": "-4.99%",
       "target_date": "20260119",
       "min_distance": 70.8896,
       "min_distance_name": "中信证券-20240708-20240730",
       "matching_period": "['20251224']-['20260119']",
       "news": [
+        {
+          "title": "赛马概念下跌2.06%，主力资金净流出4股",
+          "date": "05-13 04:53",
+          "source": "*ST正平资讯",
+          "url": "https://guba.eastmoney.com/news,603843,1707325842.html"
+        },
+        {
+          "title": "财务资料真实性疑点多 *ST正平“摘星”前景不明",
+          "date": "05-13 02:38",
+          "source": "*ST正平资讯",
+          "url": "https://guba.eastmoney.com/news,603843,1706646817.html"
+        },
         {
           "title": "赛马概念涨0.68%，主力资金净流入这些股",
           "date": "05-12 04:30",
@@ -588,26 +600,14 @@
           "date": "05-11 08:53",
           "source": "*ST正平资讯",
           "url": "https://guba.eastmoney.com/news,603843,1705847843.html"
-        },
-        {
-          "title": "*ST正平：回复上交所监管工作函 称不存在故意损毁财务资料等情形",
-          "date": "05-11 07:52",
-          "source": "*ST正平资讯",
-          "url": "https://guba.eastmoney.com/news,603843,1705831672.html"
-        },
-        {
-          "title": "*ST正平(603843.SH)：公司股票出现剧烈波动 股价大幅起伏已积累较高交易风险",
-          "date": "05-08 10:43",
-          "source": "*ST正平资讯",
-          "url": "https://guba.eastmoney.com/news,603843,1704939972.html"
         }
       ]
     },
     {
       "code": "300652",
       "name": "雷迪克",
-      "price": "46.85",
-      "change_pct": "-1.93%",
+      "price": "46.45",
+      "change_pct": "-0.85%",
       "target_date": "20260119",
       "min_distance": 70.9504,
       "min_distance_name": "华纳药厂-20250409-20250512",
@@ -666,13 +666,25 @@
     {
       "code": "002600",
       "name": "领益智造",
-      "price": "14.96",
-      "change_pct": "-1.84%",
+      "price": "15.37",
+      "change_pct": "2.74%",
       "target_date": "20260119",
       "min_distance": 71.2806,
       "min_distance_name": "瑞达期货-20251020-20251107",
       "matching_period": "['20251226']-['20260119']",
       "news": [
+        {
+          "title": "主力资金 | 尾盘加仓股名单出炉",
+          "date": "05-13 06:06",
+          "source": "领益智造资讯",
+          "url": "https://guba.eastmoney.com/news,002600,1707355381.html"
+        },
+        {
+          "title": "公司是否参加了2026年第二届人形机器人展会？领益智造：公司如后续参展，将通过公司公众号发布相关信息",
+          "date": "05-13 03:55",
+          "source": "领益智造资讯",
+          "url": "https://guba.eastmoney.com/news,002600,1707305746.html"
+        },
         {
           "title": "领益智造：每10股派0.200000元，股权登记日为5月18日",
           "date": "05-11 07:13",
@@ -708,26 +720,14 @@
           "date": "05-08 03:07",
           "source": "领益智造资讯",
           "url": "https://guba.eastmoney.com/news,002600,1704822679.html"
-        },
-        {
-          "title": "领益智造增资至约73.1亿",
-          "date": "05-08 02:47",
-          "source": "领益智造资讯",
-          "url": "https://guba.eastmoney.com/news,002600,1704787874.html"
-        },
-        {
-          "title": "领益智造：累计回购公司股份22199300股",
-          "date": "05-06 08:04",
-          "source": "领益智造资讯",
-          "url": "https://guba.eastmoney.com/news,002600,1703505596.html"
         }
       ]
     },
     {
       "code": "301383",
       "name": "天键股份",
-      "price": "28.51",
-      "change_pct": "-3.75%",
+      "price": "29.54",
+      "change_pct": "3.61%",
       "target_date": "20260119",
       "min_distance": 72.0195,
       "min_distance_name": "瑞达期货-20251020-20251107",
@@ -786,13 +786,19 @@
     {
       "code": "603507",
       "name": "振江股份",
-      "price": "43.75",
-      "change_pct": "-2.45%",
+      "price": "45.6",
+      "change_pct": "4.23%",
       "target_date": "20260119",
       "min_distance": 72.3949,
       "min_distance_name": "航天发展-20251017-20251112",
       "matching_period": "['20251222']-['20260119']",
       "news": [
+        {
+          "title": "振江股份：目前公司经营一切正常",
+          "date": "05-13 07:26",
+          "source": "振江股份资讯",
+          "url": "https://guba.eastmoney.com/news,603507,1707374168.html"
+        },
         {
           "title": "振江股份跌7.66%，上榜营业部合计净卖出1450.29万元",
           "date": "05-08 05:33",
@@ -834,20 +840,14 @@
           "date": "04-29 08:59",
           "source": "振江股份资讯",
           "url": "https://guba.eastmoney.com/news,603507,1701745425.html"
-        },
-        {
-          "title": "图解财报：振江股份一季度归母净利润9706.26万元，同比增长1249.12%",
-          "date": "04-29 08:51",
-          "source": "振江股份资讯",
-          "url": "https://guba.eastmoney.com/news,603507,1701731064.html"
         }
       ]
     },
     {
       "code": "688010",
       "name": "福光股份",
-      "price": "34.83",
-      "change_pct": "-0.68%",
+      "price": "34.7",
+      "change_pct": "-0.37%",
       "target_date": "20260119",
       "min_distance": 72.6728,
       "min_distance_name": "瑞达期货-20251020-20251107",
@@ -906,8 +906,8 @@
     {
       "code": "600568",
       "name": "ST中珠",
-      "price": "2.51",
-      "change_pct": "0.8%",
+      "price": "2.45",
+      "change_pct": "-2.39%",
       "target_date": "20260119",
       "min_distance": 72.7113,
       "min_distance_name": "中信证券-20240708-20240730",
@@ -966,8 +966,8 @@
     {
       "code": "301070",
       "name": "开勒股份",
-      "price": "110.37",
-      "change_pct": "0.93%",
+      "price": "108.76",
+      "change_pct": "-1.46%",
       "target_date": "20260119",
       "min_distance": 72.7452,
       "min_distance_name": "瑞达期货-20251020-20251107",
@@ -1026,8 +1026,8 @@
     {
       "code": "688297",
       "name": "中无人机",
-      "price": "47.19",
-      "change_pct": "0.38%",
+      "price": "46.89",
+      "change_pct": "-0.64%",
       "target_date": "20260119",
       "min_distance": 73.0139,
       "min_distance_name": "瑞达期货-20251020-20251107",
@@ -1086,13 +1086,43 @@
     {
       "code": "002501",
       "name": "*ST利源",
-      "price": "1.4",
-      "change_pct": "5.26%",
+      "price": "1.47",
+      "change_pct": "5.0%",
       "target_date": "20260119",
       "min_distance": 73.2047,
       "min_distance_name": "瑞达期货-20251020-20251107",
       "matching_period": "['20251226']-['20260119']",
       "news": [
+        {
+          "title": "*ST利源：连续3个交易日收盘价涨幅偏离值累超13.19%",
+          "date": "05-13 05:58",
+          "source": "*ST利源资讯",
+          "url": "https://guba.eastmoney.com/news,002501,1707346894.html"
+        },
+        {
+          "title": "*ST利源(002501)龙虎榜数据(05-13)",
+          "date": "05-13 04:27",
+          "source": "*ST利源资讯",
+          "url": "https://guba.eastmoney.com/news,002501,1707313030.html"
+        },
+        {
+          "title": "*ST利源连收3个涨停板",
+          "date": "05-13 09:55",
+          "source": "*ST利源资讯",
+          "url": "https://guba.eastmoney.com/news,002501,1706824401.html"
+        },
+        {
+          "title": "主力资金连续5日净流入112股",
+          "date": "05-12 10:12",
+          "source": "*ST利源资讯",
+          "url": "https://guba.eastmoney.com/news,002501,1706620120.html"
+        },
+        {
+          "title": "*ST利源：截至5月8日，间接控股股东江苏步步高置业有限公司累计为上市公司提供财务资助1.5亿元",
+          "date": "05-12 08:53",
+          "source": "*ST利源资讯",
+          "url": "https://guba.eastmoney.com/news,002501,1706596387.html"
+        },
         {
           "title": "*ST利源：独立董事吴吉林辞任",
           "date": "05-12 03:56",
@@ -1110,44 +1140,14 @@
           "date": "05-06 06:30",
           "source": "*ST利源资讯",
           "url": "https://guba.eastmoney.com/news,002501,1703475377.html"
-        },
-        {
-          "title": "*ST利源(002501)龙虎榜数据(05-06)",
-          "date": "05-06 04:27",
-          "source": "*ST利源资讯",
-          "url": "https://guba.eastmoney.com/news,002501,1703437665.html"
-        },
-        {
-          "title": "*ST利源：2026年一季度净利润同比减亏812.72万元",
-          "date": "05-01 01:05",
-          "source": "*ST利源资讯",
-          "url": "https://guba.eastmoney.com/news,002501,1702570312.html"
-        },
-        {
-          "title": "利源股份：2025年净利润同比减亏5.40亿元",
-          "date": "04-29 04:20",
-          "source": "*ST利源资讯",
-          "url": "https://guba.eastmoney.com/news,002501,1701630867.html"
-        },
-        {
-          "title": "利源股份(002501.SZ)：2026年一季报净利润为-1290.01万元",
-          "date": "04-29 11:31",
-          "source": "*ST利源资讯",
-          "url": "https://guba.eastmoney.com/news,002501,1701354324.html"
-        },
-        {
-          "title": "利源股份(002501.SZ)：2025年年报净利润为-1.78亿元",
-          "date": "04-29 09:34",
-          "source": "*ST利源资讯",
-          "url": "https://guba.eastmoney.com/news,002501,1701180317.html"
         }
       ]
     },
     {
       "code": "002678",
       "name": "珠江钢琴",
-      "price": "6.11",
-      "change_pct": "-2.55%",
+      "price": "6.08",
+      "change_pct": "-0.49%",
       "target_date": "20260119",
       "min_distance": 73.303,
       "min_distance_name": "华纳药厂-20250409-20250512",
@@ -1206,13 +1206,19 @@
     {
       "code": "600184",
       "name": "光电股份",
-      "price": "29.08",
-      "change_pct": "6.6%",
+      "price": "29.12",
+      "change_pct": "14%",
       "target_date": "20260119",
       "min_distance": 73.3047,
       "min_distance_name": "瑞达期货-20251020-20251107",
       "matching_period": "['20251226']-['20260119']",
       "news": [
+        {
+          "title": "光电股份：股票交易异常波动公告",
+          "date": "05-12 09:23",
+          "source": "光电股份资讯",
+          "url": "https://guba.eastmoney.com/news,600184,1706613008.html"
+        },
         {
           "title": "光电股份：连续3个交易日收盘价涨幅偏离值累超20%",
           "date": "05-12 06:30",
@@ -1254,20 +1260,14 @@
           "date": "05-11 09:35",
           "source": "光电股份资讯",
           "url": "https://guba.eastmoney.com/news,600184,1705288609.html"
-        },
-        {
-          "title": "光电股份：2025年公司高性能光学材料及先进元件项目按计划有序推进",
-          "date": "05-08 06:56",
-          "source": "光电股份资讯",
-          "url": "https://guba.eastmoney.com/news,600184,1704892953.html"
         }
       ]
     },
     {
       "code": "002389",
       "name": "航天彩虹",
-      "price": "22.41",
-      "change_pct": "-1.45%",
+      "price": "22.51",
+      "change_pct": "0.45%",
       "target_date": "20260119",
       "min_distance": 73.658,
       "min_distance_name": "瑞达期货-20251020-20251107",
@@ -1325,9 +1325,9 @@
     },
     {
       "code": "002093",
-      "name": "国脉科技",
-      "price": "8.52",
-      "change_pct": "-1.96%",
+      "name": "002093",
+      "price": "",
+      "change_pct": "",
       "target_date": "20260119",
       "min_distance": 73.9688,
       "min_distance_name": "中信证券-20240708-20240730",
@@ -1385,9 +1385,9 @@
     },
     {
       "code": "601698",
-      "name": "中国卫通",
-      "price": "38.26",
-      "change_pct": "-3.89%",
+      "name": "601698",
+      "price": "",
+      "change_pct": "",
       "target_date": "20260119",
       "min_distance": 74.0803,
       "min_distance_name": "微芯生物-20250527-20250620",
@@ -1445,69 +1445,69 @@
     },
     {
       "code": "300965",
-      "name": "恒宇信通",
+      "name": "300965",
       "price": "",
-      "change_pct": "0%",
+      "change_pct": "",
       "target_date": "20260119",
       "min_distance": 74.1882,
       "min_distance_name": "瑞达期货-20251020-20251107",
       "matching_period": "['20251226']-['20260119']",
       "news": [
         {
-          "title": "A股停牌提示：24股今日停牌",
-          "date": "05-11 09:06",
+          "title": "32只创业板股换手率超20%",
+          "date": "05-13 05:54",
           "source": "恒宇信通资讯",
-          "url": "https://guba.eastmoney.com/news,300965,1705184118.html"
+          "url": "https://guba.eastmoney.com/news,300965,1707350380.html"
         },
         {
-          "title": "A股停牌提示：23股今日停牌",
-          "date": "05-08 09:04",
+          "title": "恒宇信通(300965)龙虎榜数据(05-13)",
+          "date": "05-13 04:27",
           "source": "恒宇信通资讯",
-          "url": "https://guba.eastmoney.com/news,300965,1704302850.html"
+          "url": "https://guba.eastmoney.com/news,300965,1707313159.html"
         },
         {
-          "title": "恒宇信通：2026年一季度亏损339.13万元",
-          "date": "05-01 11:47",
+          "title": "恒宇信通：拟收购神导科技100%股权，股票复牌",
+          "date": "05-13 03:09",
           "source": "恒宇信通资讯",
-          "url": "https://guba.eastmoney.com/news,300965,1702564146.html"
+          "url": "https://guba.eastmoney.com/news,300965,1707282604.html"
         },
         {
-          "title": "恒宇信通：公司2026年第一季度实现营业收入为25901754.68元",
-          "date": "04-28 06:34",
+          "title": "【盘中播报】沪指涨0.40% 电子行业涨幅最大",
+          "date": "05-13 02:31",
           "source": "恒宇信通资讯",
-          "url": "https://guba.eastmoney.com/news,300965,1700872699.html"
+          "url": "https://guba.eastmoney.com/news,300965,1707230020.html"
         },
         {
-          "title": "恒宇信通(300965.SZ)发布一季度业绩，由盈转亏至339.13万元",
-          "date": "04-28 05:26",
+          "title": "一季度营收跌近四成陷亏损，恒宇信通抛重大资产重组预案，标的曾冲击IPO未果、2024年尚处亏损",
+          "date": "05-13 11:33",
           "source": "恒宇信通资讯",
-          "url": "https://guba.eastmoney.com/news,300965,1700828273.html"
+          "url": "https://guba.eastmoney.com/news,300965,1707009025.html"
         },
         {
-          "title": "恒宇信通(300965.SZ)一季度盈转亏至339.13万元",
-          "date": "04-28 04:19",
+          "title": "拟收购研制卫星导航产品公司 恒宇信通复牌20cm涨停",
+          "date": "05-13 11:09",
           "source": "恒宇信通资讯",
-          "url": "https://guba.eastmoney.com/news,300965,1700798215.html"
+          "url": "https://guba.eastmoney.com/news,300965,1706966423.html"
         },
         {
-          "title": "恒宇信通(300965.SZ)：一季度净亏损339万元",
-          "date": "04-28 04:19",
+          "title": "A股涨幅第一！恒宇信通复牌一字涨停",
+          "date": "05-13 09:47",
           "source": "恒宇信通资讯",
-          "url": "https://guba.eastmoney.com/news,300965,1700798213.html"
+          "url": "https://guba.eastmoney.com/news,300965,1706805347.html"
         },
         {
-          "title": "图解财报：恒宇信通一季度归母净利润-339.13万元，上年同期512.63万元",
-          "date": "04-28 03:59",
+          "title": "刚刚20%涨停！这家A股公司：重大资产重组！",
+          "date": "05-13 09:44",
           "source": "恒宇信通资讯",
-          "url": "https://guba.eastmoney.com/news,300965,1700789217.html"
+          "url": "https://guba.eastmoney.com/news,300965,1706783874.html"
         }
       ]
     },
     {
       "code": "002651",
-      "name": "利君股份",
-      "price": "10.05",
-      "change_pct": "2.97%",
+      "name": "002651",
+      "price": "",
+      "change_pct": "",
       "target_date": "20260119",
       "min_distance": 74.3033,
       "min_distance_name": "中信证券-20240708-20240730",
@@ -1565,9 +1565,9 @@
     },
     {
       "code": "601512",
-      "name": "中新集团",
-      "price": "10.06",
-      "change_pct": "-5.89%",
+      "name": "601512",
+      "price": "",
+      "change_pct": "",
       "target_date": "20260119",
       "min_distance": 74.3312,
       "min_distance_name": "华纳药厂-20250409-20250512",
@@ -1625,9 +1625,9 @@
     },
     {
       "code": "600682",
-      "name": "南京新百",
-      "price": "6.48",
-      "change_pct": "-3.14%",
+      "name": "600682",
+      "price": "",
+      "change_pct": "",
       "target_date": "20260119",
       "min_distance": 74.3798,
       "min_distance_name": "瑞达期货-20251020-20251107",
@@ -1685,14 +1685,20 @@
     },
     {
       "code": "600999",
-      "name": "招商证券",
-      "price": "16.28",
-      "change_pct": "0.68%",
+      "name": "600999",
+      "price": "",
+      "change_pct": "",
       "target_date": "20260119",
       "min_distance": 74.5648,
       "min_distance_name": "瑞达期货-20251020-20251107",
       "matching_period": "['20251226']-['20260119']",
       "news": [
+        {
+          "title": "招商证券“换帅” 霍达辞任后，朱江涛暂代董事长职责",
+          "date": "05-12 08:45",
+          "source": "招商证券资讯",
+          "url": "https://guba.eastmoney.com/news,600999,1706593478.html"
+        },
         {
           "title": "券商新增“115%即时平仓线” 释放什么信号？",
           "date": "05-11 11:15",
@@ -1734,20 +1740,14 @@
           "date": "05-09 09:33",
           "source": "招商证券资讯",
           "url": "https://guba.eastmoney.com/news,600999,1704990126.html"
-        },
-        {
-          "title": "招商证券换“掌舵人”！霍达因工作变动离任，朱江涛代行董事长职责",
-          "date": "05-08 11:12",
-          "source": "招商证券资讯",
-          "url": "https://guba.eastmoney.com/news,600999,1704945528.html"
         }
       ]
     },
     {
       "code": "300198",
-      "name": "*ST纳川",
-      "price": "2.37",
-      "change_pct": "-4.44%",
+      "name": "300198",
+      "price": "",
+      "change_pct": "",
       "target_date": "20260119",
       "min_distance": 74.781,
       "min_distance_name": "瑞达期货-20251020-20251107",
