@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-24 14:28:30",
+  "generated_at": "2026-09-25 14:48:07",
   "csv_source": "20260119-ret.csv",
   "total_stocks": 30,
   "stocks": [
@@ -13,6 +13,18 @@
       "min_distance_name": "瑞达期货-20251020-20251107",
       "matching_period": "['20251226']-['20260119']",
       "news": [
+        {
+          "title": "联合化学控股股东方拟减持不超3%，公司上半年净利“跳水”，年内股价跌逾两成",
+          "date": "09-25 02:13",
+          "source": "联合化学资讯",
+          "url": "https://guba.eastmoney.com/news,301209,1777757219.html"
+        },
+        {
+          "title": "联合化学：控股股东及一致行动人拟合计减持公司不超3%股份",
+          "date": "09-24 10:26",
+          "source": "联合化学资讯",
+          "url": "https://guba.eastmoney.com/news,301209,1777705067.html"
+        },
         {
           "title": "联合化学：控股股东及其一致行动人拟减持不超3%股份",
           "date": "09-24 09:57",
@@ -48,18 +60,6 @@
           "date": "09-11 10:50",
           "source": "联合化学资讯",
           "url": "https://guba.eastmoney.com/news,301209,1771933472.html"
-        },
-        {
-          "title": "联合化学最新股东户数环比下降6.01% 筹码趋向集中",
-          "date": "09-11 10:50",
-          "source": "联合化学资讯",
-          "url": "https://guba.eastmoney.com/news,301209,1771933477.html"
-        },
-        {
-          "title": "联合化学(301209.SZ)2026年中报净利润为583.20万元、较去年同期下降82.72%",
-          "date": "08-26 11:03",
-          "source": "联合化学资讯",
-          "url": "https://guba.eastmoney.com/news,301209,1764386977.html"
         }
       ]
     },
@@ -314,6 +314,36 @@
       "matching_period": "['20251226']-['20260119']",
       "news": [
         {
+          "title": "中国石油化工股份(00386)9月25日斥资2378.99万港元回购537.6万股",
+          "date": "09-25 06:02",
+          "source": "中国石化资讯",
+          "url": "https://guba.eastmoney.com/news,600028,1777769595.html"
+        },
+        {
+          "title": "中国石油化工股份(00386.HK)9月25日耗资2378.99万港元回购537.6万股",
+          "date": "09-25 06:01",
+          "source": "中国石化资讯",
+          "url": "https://guba.eastmoney.com/news,600028,1777769553.html"
+        },
+        {
+          "title": "中国石油化工股份：9月25日斥资2378.99万港元回购537.6万股",
+          "date": "09-25 06:01",
+          "source": "中国石化资讯",
+          "url": "https://guba.eastmoney.com/news,600028,1777770550.html"
+        },
+        {
+          "title": "中国石油化工股份(00386.HK)9月24日回购543.40万股，耗资2434.16万港元",
+          "date": "09-24 10:39",
+          "source": "中国石化资讯",
+          "url": "https://guba.eastmoney.com/news,600028,1777706194.html"
+        },
+        {
+          "title": "全球化工50强中有12家在此落户，上海化工区“三十而立”展现更开放姿态",
+          "date": "09-24 07:59",
+          "source": "中国石化资讯",
+          "url": "https://guba.eastmoney.com/news,600028,1777710865.html"
+        },
+        {
           "title": "中国石油化工股份(00386.HK)9月24日耗资2434.2万港元回购543.4万股",
           "date": "09-24 05:45",
           "source": "中国石化资讯",
@@ -330,36 +360,6 @@
           "date": "09-24 05:18",
           "source": "中国石化资讯",
           "url": "https://guba.eastmoney.com/news,600028,1777664352.html"
-        },
-        {
-          "title": "中国石化等在海南成立能源运输公司",
-          "date": "09-24 02:08",
-          "source": "中国石化资讯",
-          "url": "https://guba.eastmoney.com/news,600028,1777555247.html"
-        },
-        {
-          "title": "中央企业支持高标准建设海南自由贸易港座谈会在京举行",
-          "date": "09-23 11:19",
-          "source": "中国石化资讯",
-          "url": "https://guba.eastmoney.com/news,600028,1777139699.html"
-        },
-        {
-          "title": "中国石油化工股份：9月23日斥资2420.96万港元回购543.40万股",
-          "date": "09-23 05:39",
-          "source": "中国石化资讯",
-          "url": "https://guba.eastmoney.com/news,600028,1777078011.html"
-        },
-        {
-          "title": "中国石化：每股派现0.105元，股权登记日为9月29日",
-          "date": "09-22 10:45",
-          "source": "中国石化资讯",
-          "url": "https://guba.eastmoney.com/news,600028,1776548612.html"
-        },
-        {
-          "title": "中国石化：2026年半年度A股分红派息实施公告",
-          "date": "09-22 09:05",
-          "source": "中国石化资讯",
-          "url": "https://guba.eastmoney.com/news,600028,1776530432.html"
         }
       ]
     },
@@ -434,6 +434,12 @@
       "matching_period": "['20251222']-['20260119']",
       "news": [
         {
+          "title": "延长12个月！湘财股份、大智慧 齐发公告！",
+          "date": "09-24 10:33",
+          "source": "大智慧资讯",
+          "url": "https://guba.eastmoney.com/news,601519,1777705175.html"
+        },
+        {
           "title": "【e公司观察】先行赔付之外，反向追偿开启虚假陈述追责“后半程”",
           "date": "09-24 07:03",
           "source": "大智慧资讯",
@@ -474,12 +480,6 @@
           "date": "08-28 08:30",
           "source": "大智慧资讯",
           "url": "https://guba.eastmoney.com/news,601519,1765992054.html"
-        },
-        {
-          "title": "湘财股份上半年净利大增至5.29亿，大智慧亏损0.28亿，吸收合并仍在上交所审核中",
-          "date": "08-27 06:09",
-          "source": "大智慧资讯",
-          "url": "https://guba.eastmoney.com/news,601519,1765303013.html"
         }
       ]
     },
@@ -1394,6 +1394,12 @@
       "matching_period": "['20251223']-['20260119']",
       "news": [
         {
+          "title": "太空算力产业面消息不断 上半年实现盈利的太空算力概念股梳理",
+          "date": "09-25 07:32",
+          "source": "中国卫通资讯",
+          "url": "https://guba.eastmoney.com/news,601698,1777773557.html"
+        },
+        {
           "title": "中国卫通（601698）：中标四川广播电视台采购项目，中标金额为883.32万元",
           "date": "09-24 08:19",
           "source": "中国卫通资讯",
@@ -1434,12 +1440,6 @@
           "date": "09-02 06:50",
           "source": "中国卫通资讯",
           "url": "https://guba.eastmoney.com/news,601698,1767933657.html"
-        },
-        {
-          "title": "中国卫通：将于2026年08月28日召开2026年第一次临时股东大会",
-          "date": "08-27 04:01",
-          "source": "中国卫通资讯",
-          "url": "https://guba.eastmoney.com/news,601698,1765258453.html"
         }
       ]
     },
