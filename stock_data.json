@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-30 16:07:17",
+  "generated_at": "2026-10-01 16:43:09",
   "csv_source": "20260119-ret.csv",
   "total_stocks": 30,
   "stocks": [
@@ -13,6 +13,12 @@
       "min_distance_name": "瑞达期货-20251020-20251107",
       "matching_period": "['20251226']-['20260119']",
       "news": [
+        {
+          "title": "联合化学控股股东拟协议转让7%股份，折价约20%，叠加此前3%减持计划，上半年净利“跳水”",
+          "date": "10-01 07:56",
+          "source": "联合化学资讯",
+          "url": "https://guba.eastmoney.com/news,301209,1779476635.html"
+        },
         {
           "title": "联合化学控股股东拟协议转让7%公司股份",
           "date": "09-30 08:25",
@@ -54,12 +60,6 @@
           "date": "09-28 08:34",
           "source": "联合化学资讯",
           "url": "https://guba.eastmoney.com/news,301209,1777884991.html"
-        },
-        {
-          "title": "9月28日投资避雷针：5连板人气股遭上交所下发监管函",
-          "date": "09-28 08:21",
-          "source": "联合化学资讯",
-          "url": "https://guba.eastmoney.com/news,301209,1777882002.html"
         }
       ]
     },
@@ -1685,14 +1685,38 @@
     },
     {
       "code": "600999",
-      "name": "招商证券",
-      "price": "17.07",
-      "change_pct": "0.77%",
+      "name": "600999",
+      "price": "",
+      "change_pct": "",
       "target_date": "20260119",
       "min_distance": 74.5648,
       "min_distance_name": "瑞达期货-20251020-20251107",
       "matching_period": "['20251226']-['20260119']",
       "news": [
+        {
+          "title": "招商证券总裁落定！刘波接棒，与朱江涛组成“招行系”新班子",
+          "date": "10-01 08:43",
+          "source": "招商证券资讯",
+          "url": "https://guba.eastmoney.com/news,600999,1779478762.html"
+        },
+        {
+          "title": "高管阵容落定！刘波升任招商证券总经理",
+          "date": "10-01 05:25",
+          "source": "招商证券资讯",
+          "url": "https://guba.eastmoney.com/news,600999,1779469637.html"
+        },
+        {
+          "title": "在港机构加码清理内地非法交易 多家收紧部分观望",
+          "date": "10-01 01:20",
+          "source": "招商证券资讯",
+          "url": "https://guba.eastmoney.com/news,600999,1779454734.html"
+        },
+        {
+          "title": "总裁空缺4个月后补齐！刘波出任招商证券总裁，与朱江涛组成“招行系”搭档",
+          "date": "10-01 01:05",
+          "source": "招商证券资讯",
+          "url": "https://guba.eastmoney.com/news,600999,1779453079.html"
+        },
         {
           "title": "正式官宣，“老将”刘波出任招商证券总裁",
           "date": "09-30 10:01",
@@ -1716,38 +1740,14 @@
           "date": "09-30 08:53",
           "source": "招商证券资讯",
           "url": "https://guba.eastmoney.com/news,600999,1779403963.html"
-        },
-        {
-          "title": "招商证券(06099.HK)委任刘波担任公司总裁",
-          "date": "09-30 08:45",
-          "source": "招商证券资讯",
-          "url": "https://guba.eastmoney.com/news,600999,1779400975.html"
-        },
-        {
-          "title": "招商证券官宣新总裁：49岁刘波升任，5月刚完成董事长更迭",
-          "date": "09-30 08:44",
-          "source": "招商证券资讯",
-          "url": "https://guba.eastmoney.com/news,600999,1779401736.html"
-        },
-        {
-          "title": "招商证券副总裁刘波升任总裁",
-          "date": "09-30 08:32",
-          "source": "招商证券资讯",
-          "url": "https://guba.eastmoney.com/news,600999,1779399420.html"
-        },
-        {
-          "title": "招商证券聘任刘波为公司总裁 提名其为执行董事候选人",
-          "date": "09-30 08:25",
-          "source": "招商证券资讯",
-          "url": "https://guba.eastmoney.com/news,600999,1779399786.html"
         }
       ]
     },
     {
       "code": "300198",
-      "name": "*ST纳川",
-      "price": "2.43",
-      "change_pct": "0.83%",
+      "name": "300198",
+      "price": "",
+      "change_pct": "",
       "target_date": "20260119",
       "min_distance": 74.781,
       "min_distance_name": "瑞达期货-20251020-20251107",
