@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-01 16:43:09",
+  "generated_at": "2026-10-02 15:59:15",
   "csv_source": "20260119-ret.csv",
   "total_stocks": 30,
   "stocks": [
@@ -1685,9 +1685,9 @@
     },
     {
       "code": "600999",
-      "name": "600999",
-      "price": "",
-      "change_pct": "",
+      "name": "招商证券",
+      "price": "17.07",
+      "change_pct": "0.77%",
       "target_date": "20260119",
       "min_distance": 74.5648,
       "min_distance_name": "瑞达期货-20251020-20251107",
@@ -1745,9 +1745,9 @@
     },
     {
       "code": "300198",
-      "name": "300198",
-      "price": "",
-      "change_pct": "",
+      "name": "*ST纳川",
+      "price": "2.43",
+      "change_pct": "0.83%",
       "target_date": "20260119",
       "min_distance": 74.781,
       "min_distance_name": "瑞达期货-20251020-20251107",
