@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-06 16:18:43",
+  "generated_at": "2026-10-07 17:02:26",
   "csv_source": "20260119-ret.csv",
   "total_stocks": 30,
   "stocks": [
@@ -314,6 +314,12 @@
       "matching_period": "['20251226']-['20260119']",
       "news": [
         {
+          "title": "经济日报：深化国资国企改革提升核心竞争力",
+          "date": "10-07 05:56",
+          "source": "XD中国石资讯",
+          "url": "https://guba.eastmoney.com/news,600028,1779727804.html"
+        },
+        {
           "title": "贝莱德在中国石油化工股份的H股好仓比例下降0.24%至6.94%",
           "date": "10-05 06:01",
           "source": "XD中国石资讯",
@@ -354,12 +360,6 @@
           "date": "09-28 09:08",
           "source": "XD中国石资讯",
           "url": "https://guba.eastmoney.com/news,600028,1778405221.html"
-        },
-        {
-          "title": "中国石油化工股份(00386.HK)9月28日耗资2405.3万港元回购534万股",
-          "date": "09-28 05:46",
-          "source": "XD中国石资讯",
-          "url": "https://guba.eastmoney.com/news,600028,1778363807.html"
         }
       ]
     },
@@ -1094,6 +1094,12 @@
       "matching_period": "['20251226']-['20260119']",
       "news": [
         {
+          "title": "A股三季报披露即将启幕，20家上市公司三季度业绩预告“抢先看”",
+          "date": "10-07 09:56",
+          "source": "*ST利源资讯",
+          "url": "https://guba.eastmoney.com/news,002501,1779792820.html"
+        },
+        {
           "title": "*ST利源：将于2026年09月28日召开2026年第二次临时股东大会",
           "date": "09-27 04:01",
           "source": "*ST利源资讯",
@@ -1134,12 +1140,6 @@
           "date": "09-18 06:33",
           "source": "*ST利源资讯",
           "url": "https://guba.eastmoney.com/news,002501,1775177182.html"
-        },
-        {
-          "title": "*ST利源(002501.SZ)拟将部分不良债权转让给公司间接控股股东苏州百胜",
-          "date": "09-18 05:39",
-          "source": "*ST利源资讯",
-          "url": "https://guba.eastmoney.com/news,002501,1775164084.html"
         }
       ]
     },
@@ -1412,12 +1412,6 @@
           "url": "https://guba.eastmoney.com/news,601698,1777688814.html"
         },
         {
-          "title": "2026年中国国际信息通信展览会今日开展",
-          "date": "09-22 08:35",
-          "source": "中国卫通资讯",
-          "url": "https://guba.eastmoney.com/news,601698,1776123048.html"
-        },
-        {
           "title": "广州规划推进卫星互联网大星座与海洋产业深度融合丨盘前线索",
           "date": "09-15 09:26",
           "source": "中国卫通资讯",
@@ -1440,6 +1434,12 @@
           "date": "09-06 01:11",
           "source": "中国卫通资讯",
           "url": "https://guba.eastmoney.com/news,601698,1769319208.html"
+        },
+        {
+          "title": "军工逆势活跃！订单预付款同比大增",
+          "date": "09-02 06:50",
+          "source": "中国卫通资讯",
+          "url": "https://guba.eastmoney.com/news,601698,1767933657.html"
         }
       ]
     },
@@ -1625,9 +1625,9 @@
     },
     {
       "code": "600682",
-      "name": "南京新百",
-      "price": "5.84",
-      "change_pct": "1.74%",
+      "name": "600682",
+      "price": "",
+      "change_pct": "",
       "target_date": "20260119",
       "min_distance": 74.3798,
       "min_distance_name": "瑞达期货-20251020-20251107",
@@ -1685,14 +1685,26 @@
     },
     {
       "code": "600999",
-      "name": "招商证券",
-      "price": "17.07",
-      "change_pct": "0.77%",
+      "name": "600999",
+      "price": "",
+      "change_pct": "",
       "target_date": "20260119",
       "min_distance": 74.5648,
       "min_distance_name": "瑞达期货-20251020-20251107",
       "matching_period": "['20251226']-['20260119']",
       "news": [
+        {
+          "title": "前三季度A股IPO承销座次大洗牌：国泰海通单数居首，中金收入领跑",
+          "date": "10-07 09:49",
+          "source": "招商证券资讯",
+          "url": "https://guba.eastmoney.com/news,600999,1779789935.html"
+        },
+        {
+          "title": "前三季度17家上市券商换“将帅” 总经理变动同比翻番",
+          "date": "10-07 09:50",
+          "source": "招商证券资讯",
+          "url": "https://guba.eastmoney.com/news,600999,1779737563.html"
+        },
         {
           "title": "券商发债直追2万亿，头部三家破千亿，资本优势孵化业绩优势",
           "date": "10-05 08:56",
@@ -1728,26 +1740,14 @@
           "date": "10-01 01:05",
           "source": "招商证券资讯",
           "url": "https://guba.eastmoney.com/news,600999,1779453079.html"
-        },
-        {
-          "title": "正式官宣，“老将”刘波出任招商证券总裁",
-          "date": "09-30 10:01",
-          "source": "招商证券资讯",
-          "url": "https://guba.eastmoney.com/news,600999,1779413501.html"
-        },
-        {
-          "title": "招商证券新任总裁落定：原副总裁刘波接棒，三大分管业务表现如何？",
-          "date": "09-30 09:30",
-          "source": "招商证券资讯",
-          "url": "https://guba.eastmoney.com/news,600999,1779406259.html"
         }
       ]
     },
     {
       "code": "300198",
-      "name": "*ST纳川",
-      "price": "2.43",
-      "change_pct": "0.83%",
+      "name": "300198",
+      "price": "",
+      "change_pct": "",
       "target_date": "20260119",
       "min_distance": 74.781,
       "min_distance_name": "瑞达期货-20251020-20251107",
